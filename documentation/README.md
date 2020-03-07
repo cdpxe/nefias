@@ -6,9 +6,14 @@ NeFiAS is a a tiny framework (very few lines of code), super portable (standard 
 
 # Architecture
 
-NeFiAS requires two types of nodes: a master node and at least one slave node[^1]. However, the more slave nodes you have, the more performance you will get. NeFiAS processes so-called **jobs**, i.e. computing tasks.
+## Node Types and Job Concepts
+NeFiAS requires two types of nodes: a master node and at least one slave node. Theoretically, master node and slave node can be installed on the same computer, so a one-node NeFiAS installation is possible. However, the more slave nodes you have, the more performance you will get. NeFiAS processes so-called **jobs**, i.e. computing tasks.
 
 The **master node** is responsible of executing such a NeFiAS job. Therefore, the master node reads the input traffic (CSV format, can also be PCAP/PCAPNG, see below), extracts the relevant traffic meta-data (e.g. source IP address, destination IP address, packet length or other attributes), and splits the data into chunks (of configurable size). The master node then uploads the chunks to the **slave nodes**; the master node also uploads computation scripts and the NeFiAS library script(s) to the slave nodes. The master node monitors the progress of the slave nodes and fetches computation results, once they are completed. Once a node becomes idle, it receives new chunks. When all chunks are completed, the master node ends the job.
+
+## Communication Architecture
+
+NeFiAS is entirely based on `ssh` and `scp`, it also takes advantage of the OpenSSH-internal encryption and compression functionality. Using OpenSSH has the following reason: a) OpenSSH is reliable and secure, b) OpenSSH is widely known and often already installed by default (if not, a package/port is available), c) implementing an own communication architecture could not be much better than OpenSSH. There might be faster solutions feasible, but NeFiAS' design concept foresees that performance is *only* achieved through parallelization, not through efficient implementation.
 
 # Setup
 
@@ -167,5 +172,4 @@ The following people contributed substantially to NeFiAS:
 # References
 
 
-[^1] Theoretically, master node and slave node can be installed on the same computer, so a one-node NeFiAS installation is possible.
 
