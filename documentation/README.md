@@ -1,10 +1,17 @@
 # NeFiAS Documentation
 
-(C) 2020 Prof. Dr. Steffen Wendzel, Worms University of Applied Sciences, Germany
+(C) 2020 Prof. Dr. Steffen Wendzel (Cyber Security Research Group (CSRG)/Zentrum für Technologie & Transfer, Worms University of Applied Sciences, Germany)
 
-NeFiAS (*Network Forensics and Anomaly Detection System*) is a shell-based tool for performing network anomaly detection, especially in the domain of network covert channels (network steganography). NeFiAS was (initially) written by Steffen Wendzel (see below for a list of contributors).
+NeFiAS (*Network Forensics and Anomaly Detection System*) is a shell-based tool for performing network anomaly detection, especially in the domain of network covert channels (network steganography). NeFiAS was (initially) written by [Steffen Wendzel](http://www.wendzel.de) (see below for a list of contributors).
 
 NeFiAS is a a tiny framework (very few lines of code), super portable (standard Linux + SSH + TShark), can be run on every hardware (even very old ones) as a beowulf cluster, and can be installed in a few minutes.
+
+# The story behind this tool
+
+In 2017, my colleagues and me developed WoDiCoF, the *Worms Distributed Covert Channel Detection Framework* (see (Keidel et al, 2018)). As its name implies, WoDiCoF was a system for network covert channel detection. However, WoDiCoF was based on Apache Hadoop and I wanted a very(!) lightweight network anomaly detection system (of course, also tailored for covert channel detection). And I wanted it without dependencies on things like Hadoop, Tomcat, Java (at all!), Python 2.x (we wrote some WoDiCoF code using Python 2, it was required to modify the code for Python 3), etc. Also, I wanted this system to be trivial to deploy on nodes and run on standard Linux. For this reason, I decided to implement one tiny network anomaly detection system (mostly for myself) in `bash`, using `awk` and similar tools. It might not be the fastest, and bash scripting is not the best solution to several problems, but if I can easily distribute workload on many nodes, it might still provide a good performance. Moreover, I wanted a system that can easily be extended and can be used in the scientific community to analyze detection algorithms and to perform replication studies.
+
+Note: NeFiAS contains some WoDiCoF code, for instance, `pcapng2csv` was originally written for the WoDiCoF project.
+
 
 # Architecture
 
@@ -139,11 +146,6 @@ Note: TShark can generate CSV (textual) output based on the content of PCAP file
 
 
 
-# The story behind this tool
-
-A few years ago, my colleagues and me developed WoDiCoF, the *Worms Distributed Covert Channel Detection Framework*. As its name implies, WoDiCoF was a system for network covert channel detection. However, WoDiCoF was based on Apache Hadoop and I wanted a very, very lightweight network anomaly detection system (of course, also tailored for covert channel detection). And I wanted it without dependencies on things like Hadoop, Tomcat, Java (at all!), Python 2.x (we wrote some WoDiCoF code using Python 2, it was required to modify the code for Python 3), etc. Also, I wanted this system to be trivial to deploy on nodes and run on standard Linux. For this reason, I decided to implement one tiny network anomaly detection system (mostly for myself) in `bash`, using `awk` and similar tools. It might not be the fastest, and bash scripting is not the best solution to several problems, but if I can easily distribute workload on many nodes, it might still provide a good performance. Moreover, I wanted a system that can easily be extended and can be used in the scientific community to analyze detection algorithms and to perform replication studies.
-
-NeFiAS contains some WoDiCoF code, for instance, `pcapng2csv` was originally written for the WoDiCoF project.
 
 # Additional comments (pre-alpha)
 
@@ -173,5 +175,6 @@ The following people contributed substantially to NeFiAS:
 
 # References
 
+* (Keidel et al., 2018) R. Keidel, S. Wendzel, S. Zillien et al.: [WoDiCoF - A Testbed for the Evaluation of (Parallel) Covert Channel Detection Algorithms](http://dx.doi.org/10.3217/jucs-024-05-0556), Journal of Universal Computer Science (J.UCS), Vol. 24(5), 2018.
 
 
