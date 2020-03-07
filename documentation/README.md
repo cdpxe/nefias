@@ -4,7 +4,7 @@
 
 NeFiAS (*Network Forensics and Anomaly Detection System*) is a shell-based tool for performing network anomaly detection, especially in the domain of network covert channels (network steganography). NeFiAS was (initially) written by Steffen Wendzel (see below for a list of contributors).
 
-NeFiAS is a a tiny framework (very few lines of code), super portable (standard Linux + SSH + tshark), can be run on every hardware (even very old ones) as a beowulf cluster, and can be installed in a few minutes.
+NeFiAS is a a tiny framework (very few lines of code), super portable (standard Linux + SSH + TShark), can be run on every hardware (even very old ones) as a beowulf cluster, and can be installed in a few minutes.
 
 # Architecture
 
@@ -133,7 +133,7 @@ Note: These parameters
 
 TODO
 
-Note: Tshark can generate CSV (textual) output based on the content of PCAP files. What you NEED to export are the following fields; they MUST appear in the following order:
+Note: TShark can generate CSV (textual) output based on the content of PCAP files. What you NEED to export are the following fields; they MUST appear in the following order:
 
 `frame.number,frame.time_relative,frame.len,ip.src,ip.dst,ipv6.src,ipv6.dst,tcp.srcport,tcp.dstport,udp.srcport,udp.dstport`
 
