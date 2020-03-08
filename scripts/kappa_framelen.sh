@@ -1,5 +1,5 @@
 #!/bin/bash
-# kappa_framelen.sh: calculate Kappa compressibility score based on frame length of flows
+# kappa_framelen.sh: calculate Kappa compressibility score based on frame length of a flows's packets
 # This script receives the following parameters: ./script [chunk] [jobname]
 # note: I recommend to use ~nefias/nefias as tmpfs to speed up the 'cat' command and to limit disk I/O!
 

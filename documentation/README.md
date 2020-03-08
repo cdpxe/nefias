@@ -164,30 +164,29 @@ The code above first includes the functionality of the NeFiAS library, then init
 
 Next, we see a loop to iterate trough all flows found in the data chunk that the node just received. Finally, NEFIAS_FINISH performs the necessary steps to finalize the work on the data chunk.
 
-To exemplify, let us have a look on a typical content of above-mentioned `for` loop by analyzing the script `kappa_IAT.sh`'s loop:
+To exemplify, let us have a look on a typical content of above-mentioned `for` loop by analyzing the script `scripts/kappa_framelen.sh`'s loop:
 
 ```
 #!/bin/bash
-# kappa_IAT.sh: calculate Kappa compressibility score based on inter-arrival times of flows
+# kappa_framelen.sh: calculate Kappa compressibility score based on frame length of a flows's packets
 # This script receives the following parameters: ./script [chunk] [jobname]
-# note: I recommend to use ~nefias/nefias as tmpfs to speed up the 'cat' command and to limit disk I/O!
 
 source ~/nefias/scripts/nefias_lib.sh
-NEFIAS_INIT_PER_FLOW $1 $2 "tcp"
+NEFIAS_INIT_PER_FLOW $1 $2 "ip" # || tcp || udp
 
 for flow in $FLOWS; do
-	# always get the first 1000 packets of that flow and calculate the kappa value based on frame.time_relative.
-	cat ${TMPPKTSFILE} | grep $flow | head -1001 | awk -F\, ${FLOWFIELDS} \
-	'BEGIN{ previous=0; output=""; counter=0 }
+	# always get the first 1000 packets of that flow and calculate the kappa value based on the frame length.
+	cat ${TMPPKTSFILE} | grep $flow | head -1000 | awk -F\, ${FLOWFIELDS} \
+	'function abs(x) { return x<0 ? -x : x }
+	BEGIN{ previous=0; output=""; counter=0 }
 	{
-		diff = $frame_time_relative - previous;
-		output = output sprintf("%1.4f,", diff)
-		previous = $frame_time_relative;
+		output = output sprintf(abs(previous-$frame_len)",") 
+		previous=$frame_len;
 		counter++;
 	}
 	END {
 		# make sure the window is filled with enough pkts (max defined by head -n)
-		if (counter >= 1000) print output;
+		if (counter >= 1000) print output;	
 	}' > ${TMPWORKFILE}
 	gzip -9 --no-name --keep ${TMPWORKFILE}
 	S_len=`/bin/ls -l ${TMPWORKFILE} | awk '{print $5}'`
@@ -198,7 +197,6 @@ for flow in $FLOWS; do
 		C_len=`/bin/ls -l ${TMPWORKFILE}.gz | awk '{print $5}'`
 		K=`echo "scale=6;($S_len/$C_len)" | bc`
 		echo "${flow}, K=${K}" >> ${TMPRESULTSFILE} # Temporary storage for results until all entries were calculated
-		#echo "${flow}, K=${K}"
 	fi
 	rm -f ${TMPWORKFILE} ${TMPWORKFILE}.gz # clean-up our temporary files
 done
@@ -206,9 +204,9 @@ done
 NEFIAS_FINISH
 ```
 
-The first statement in the `for` loop starts with a `cat $TMPPKTSFILE`. This allows us to filter all packets belonging to the currently processed `$flow` in the following way: All packets are contained in `${TMPPKTSFILE}`. From this file, we `grep` all packets that belong to the flow `$flow`, take the first 1.000 of these packets, and then let `awk` process each packet (*one packet = one line of input data*!). The `awk` code simply calculates the differences between frame sizes and concatenates them; finally, the whole concatenated string is printed.
+The first statement in the `for` loop starts with a `cat $TMPPKTSFILE`. This allows us to filter all packets belonging to the currently processed `$flow` in the following way: All packets are contained in `${TMPPKTSFILE}`. From this file, we `grep` all packets that belong to the flow `$flow`, take the first 1.000 of these packets, and then let `awk` process each packet (*one packet = one line of input data*!). The `awk` code simply calculates the absolute differences between frame sizes and concatenates them; finally, the whole concatenated string is printed.
 
-Header fields can be accessed using `awk` by providing the parameters `-F\, ${FLOWFIELDS}` using the format `$name_of_headerfield`, e.g. `ip_src`, `tcp_srcport` or `frame_time_relative`. Please note that points used by tshark (e.g. `ip.src` are replaced with underscores: `ip_src`)
+Header fields can be accessed using `awk` by providing the parameters `-F\, ${FLOWFIELDS}` using the format `$name_of_headerfield`, e.g. `ip_src`, `tcp_srcport` or `frame_time_relative`. Please note that field names used by tshark (e.g. `ip.src` are replaced with underscores: `ip_src`).
 
 Every NeFiAS script can use `${TMPWORKFILE}` to store immediate results. This variable is provided by NeFiAS, just like `$FLOWFIELDS` and `$TMPPKTSFILE` (contains all packets of a data chunk) and `$TMPRESULTSFILE` (to store your textual computation results, which will then be transferred back to the master node).
 
