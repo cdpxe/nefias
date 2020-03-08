@@ -2,7 +2,7 @@
 
 (C) 2020 Prof. Dr. Steffen Wendzel (Cyber Security Research Group (CSRG)/Zentrum für Technologie & Transfer, Worms University of Applied Sciences, Germany)
 
-NeFiAS (*Network Forensics and Anomaly Detection System*) is a shell-based tool for performing network anomaly detection, especially in the domain of network covert channels (network steganography). NeFiAS was (initially) written by [Steffen Wendzel](http://www.wendzel.de) (see below for a list of contributors).
+NeFiAS (*Network Forensics and Anomaly Detection System*) is a shell-based tool for performing network anomaly detection, especially in the domain of network covert channels (network steganography, see (Wendzel et al., 2015) or [our project on network covert channel patterns](https://ih-patterns.blogspot.com)). NeFiAS was (initially) written by [Steffen Wendzel](http://www.wendzel.de) (see below for a list of contributors).
 
 NeFiAS is a a tiny framework (very few lines of code), super portable (standard Linux + SSH + TShark), can be run on every hardware (even very old ones) as a beowulf cluster, and can be installed in a few minutes.
 
@@ -164,7 +164,7 @@ The code above first includes the functionality of the NeFiAS library, then init
 
 Next, we see a loop to iterate trough all flows found in the data chunk that the node just received. Finally, NEFIAS_FINISH performs the necessary steps to finalize the work on the data chunk.
 
-To exemplify, let us have a look on a typical content of above-mentioned `for` loop by analyzing the script `scripts/kappa_framelen.sh`'s loop:
+To exemplify, let us have a look on a typical content of above-mentioned `for` loop by analyzing the script `scripts/kappa_framelen.sh`'s loop, which is used to detect network covert channels that utilize packet sizes for hidden communications, see (Wendzel et al., 2015) and (Wendzel et al., 2019):
 
 ```
 #!/bin/bash
@@ -233,7 +233,7 @@ After the `awk` code finished, we check the compressibility of our previously pr
 
 Finally, `NEFIAS_FINISH` is called, which provides the results stored in `$TMPRESULTSFILE` to NeFiAS and allows the master node to fetch these results and to provide the slave node with the next chunk of data. 
 
-
+**Hint:** Have a look into the scripts of the NeFiAS subdirectory *scripts/* on the master node to see further examples. Feel free to use them as a basis for your own scripts. *Publications of scripts through our GitHub repository are highly appreciated!*
 
 
 
@@ -255,7 +255,7 @@ $ sudo chmod 770 /home/nefias/nefias/
 
 NeFiAS was used for a few scientific experiments. Papers who used NeFiAS are cited below; if available, their codes are linked here as well.
 
-- N.N.
+- Basically the same script like `scripts/kappa_frametime.sh` (minimal differences) was used in (Wendzel et al., 2019) to calculate the compressibility score for network covert channels that modulate packet sizes.
 
 # Contributors
 
@@ -265,6 +265,8 @@ The following people contributed substantially to NeFiAS:
 
 # References
 
+* (Wendzel et al., 2015) S. Wendzel, S. Zander, B. Fechner, C. Herdin: [Pattern-Based Survey and Categorization of Network Covert Channel Techniques](https://doi.org/10.1145/2684195), Computing Surveys (CSUR), Vol. 47(3), ACM, 2015.
 * (Keidel et al., 2018) R. Keidel, S. Wendzel, S. Zillien et al.: [WoDiCoF - A Testbed for the Evaluation of (Parallel) Covert Channel Detection Algorithms](http://dx.doi.org/10.3217/jucs-024-05-0556), Journal of Universal Computer Science (J.UCS), Vol. 24(5), 2018.
+* (Wendzel et al., 2019) S. Wendzel, F. Link, D. Eller, W. Mazurczyk: [Detection of Size Modulation Covert Channels Using Countermeasure Variation](http://www.jucs.org/jucs_25_11/detection_of_size_modulation), Journal of Universal Computer Science (J.UCS), Vol. 25(11), pp. 1396-1416, 2019.
 
 
