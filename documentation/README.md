@@ -1,4 +1,4 @@
-# NeFiAS Documentation
+# NeFiAS Documentation (early alpha)
 
 (C) 2020 Prof. Dr. Steffen Wendzel (Cyber Security Research Group (CSRG)/Zentrum für Technologie & Transfer, Worms University of Applied Sciences, Germany)
 
@@ -130,19 +130,107 @@ Note: It is fine you only have IPv4 OR only IPv6 OR both. If is also fine if you
 
 ### Adding custom header fields to your CSV data
 
-Feel free to add additional values to the list of exported fields, such as HTTP parameters, or parameters of any other protocol supported by `tshark`. You can do this by modifying the variable `HEADER_FIELDS` in `pcapng2csv.sh`.
+Feel free to add additional values to the list of exported fields, such as HTTP parameters, or parameters of any other protocol supported by `tshark`.
 
-However, `nefias_master` needs to know that these header fields must be used, so you need to provide them using the parameter `--values=frame.number,...`. The default setting for the `--values` parameter is `--values="frame.number,frame.time_relative,frame.len,ip.src,ip.dst,ipv6.src,ipv6.dst,tcp.srcport,tcp.dstport,udp.srcport,udp.dstport"`
+However, `nefias_master` needs to know that it should use these header fields, so you need to provide these fields using the parameter `--values=frame.number,...`. The default setting for the `--values` parameter is `--values="frame.number,frame.time_relative,frame.len,ip.src,ip.dst,ipv6.src,ipv6.dst,tcp.srcport,tcp.dstport,udp.srcport,udp.dstport"`
 
-Note: These parameters
+**Note:** TShark can generate CSV (textual) output based on the content of PCAP files. You can add custom header fields here as well. To this by modifying the variable `HEADER_FIELDS` in `pcapng2csv.sh`. However, what you NEED to export are the following fields; they MUST appear in the following order: `frame.number,frame.time_relative,frame.len,ip.src,ip.dst,ipv6.src,ipv6.dst,tcp.srcport,tcp.dstport,udp.srcport,udp.dstport`
+
+
+
+
 
 # Writing own NeFiAS scripts
 
-TODO
+The real value of NeFiAS lies in the fact that you can run your own calculations within your own jobs. To this end, you need to implement own or modify existing NeFiAS scripts, which you can find in the *scripts/* subdirectory of NeFiAS on your master node.
 
-Note: TShark can generate CSV (textual) output based on the content of PCAP files. What you NEED to export are the following fields; they MUST appear in the following order:
+## Standard format for NeFiAS scripts
 
-`frame.number,frame.time_relative,frame.len,ip.src,ip.dst,ipv6.src,ipv6.dst,tcp.srcport,tcp.dstport,udp.srcport,udp.dstport`
+Every NeFiAS script basically looks as follows (this code is executed for every chunk of every job separately):
+
+```
+#!/bin/bash
+source ~/nefias/scripts/nefias_lib.sh
+NEFIAS_INIT_PER_FLOW $1 $2 "tcp"
+
+for flow in $FLOWS; do
+	# magic happens here
+done
+
+NEFIAS_FINISH
+```
+
+The code above first includes the functionality of the NeFiAS library, then initiates the job with NEFIAS_INIT_PER_FLOW. The first two parameters (filename to process as well as jobname) are provided by NeFiAS itself and need to be passed. The third parameter (`"tcp"`) means that you want to focus on TCP flows (defined by source and destination IPv4/v6 address and TCP source/destination port). However, you can also pass the parameter (`"udp"`) for UDP flows or `"ip"` for IPv4/v6 flows (i.e. one flow may contain multiple TCP streams and UDP "connections").
+
+Next, we see a loop to iterate trough all flows found in the data chunk that the node just received. Finally, NEFIAS_FINISH performs the necessary steps to finalize the work on the data chunk.
+
+To exemplify, let us have a look on a typical content of above-mentioned `for` loop by analyzing the script `kappa_IAT.sh`'s loop:
+
+```
+#!/bin/bash
+# kappa_IAT.sh: calculate Kappa compressibility score based on inter-arrival times of flows
+# This script receives the following parameters: ./script [chunk] [jobname]
+# note: I recommend to use ~nefias/nefias as tmpfs to speed up the 'cat' command and to limit disk I/O!
+
+source ~/nefias/scripts/nefias_lib.sh
+NEFIAS_INIT_PER_FLOW $1 $2 "tcp"
+
+for flow in $FLOWS; do
+	# always get the first 1000 packets of that flow and calculate the kappa value based on frame.time_relative.
+	cat ${TMPPKTSFILE} | grep $flow | head -1001 | awk -F\, ${FLOWFIELDS} \
+	'BEGIN{ previous=0; output=""; counter=0 }
+	{
+		diff = $frame_time_relative - previous;
+		output = output sprintf("%1.4f,", diff)
+		previous = $frame_time_relative;
+		counter++;
+	}
+	END {
+		# make sure the window is filled with enough pkts (max defined by head -n)
+		if (counter >= 1000) print output;
+	}' > ${TMPWORKFILE}
+	gzip -9 --no-name --keep ${TMPWORKFILE}
+	S_len=`/bin/ls -l ${TMPWORKFILE} | awk '{print $5}'`
+	if [ "$S_len" = "0" ]; then
+		# too few elements (less than window size)
+		touch ${TMPRESULTSFILE} # just let NEFIAS know that we did our job here (create the file, if not present)
+	else
+		C_len=`/bin/ls -l ${TMPWORKFILE}.gz | awk '{print $5}'`
+		K=`echo "scale=6;($S_len/$C_len)" | bc`
+		echo "${flow}, K=${K}" >> ${TMPRESULTSFILE} # Temporary storage for results until all entries were calculated
+		#echo "${flow}, K=${K}"
+	fi
+	rm -f ${TMPWORKFILE} ${TMPWORKFILE}.gz # clean-up our temporary files
+done
+
+NEFIAS_FINISH
+```
+
+The first statement in the `for` loop starts with a `cat $TMPPKTSFILE`. This allows us to filter all packets belonging to the currently processed `$flow` in the following way: All packets are contained in `${TMPPKTSFILE}`. From this file, we `grep` all packets that belong to the flow `$flow`, take the first 1.000 of these packets, and then let `awk` process each packet (*one packet = one line of input data*!). The `awk` code simply calculates the differences between frame sizes and concatenates them; finally, the whole concatenated string is printed.
+
+Header fields can be accessed using `awk` by providing the parameters `-F\, ${FLOWFIELDS}` using the format `$name_of_headerfield`, e.g. `ip_src`, `tcp_srcport` or `frame_time_relative`. Please note that points used by tshark (e.g. `ip.src` are replaced with underscores: `ip_src`)
+
+Every NeFiAS script can use `${TMPWORKFILE}` to store immediate results. This variable is provided by NeFiAS, just like `$FLOWFIELDS` and `$TMPPKTSFILE` (contains all packets of a data chunk) and `$TMPRESULTSFILE` (to store your textual computation results, which will then be transferred back to the master node).
+
+After the `awk` code finished, we check the compressibility of our previously printed string in the following way (of course, you could do whatever else you want here!), however, **the key point is that you write your results in the file `${TMPRESULTSFILE}`.
+
+```
+	gzip -9 --no-name --keep ${TMPWORKFILE}
+	S_len=`/bin/ls -l ${TMPWORKFILE} | awk '{print $5}'`
+	if [ "$S_len" = "0" ]; then
+		# too few elements (less than window size)
+		touch ${TMPRESULTSFILE} # just let NEFIAS know that we did our job here (create the file, if not present)
+	else
+		C_len=`/bin/ls -l ${TMPWORKFILE}.gz | awk '{print $5}'`
+		K=`echo "scale=6;($S_len/$C_len)" | bc`
+		echo "${flow}, K=${K}" >> ${TMPRESULTSFILE} # Temporary storage for results until all entries were calculated
+		#echo "${flow}, K=${K}"
+	fi
+	rm -f ${TMPWORKFILE} ${TMPWORKFILE}.gz # cleanup our intermediate files
+```
+
+Finally, `NEFIAS_FINISH` is called, which provides the results stored in `$TMPRESULTSFILE` to NeFiAS and allows the master node to fetch these results and to provide the slave node with the next chunk of data. 
+
 
 
 
