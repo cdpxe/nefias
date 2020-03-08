@@ -210,19 +210,23 @@ Header fields can be accessed using `awk` by providing the parameters `-F\, ${FL
 
 Every NeFiAS script can use `${TMPWORKFILE}` to store immediate results. This variable is provided by NeFiAS, just like `$FLOWFIELDS` and `$TMPPKTSFILE` (contains all packets of a data chunk) and `$TMPRESULTSFILE` (to store your textual computation results, which will then be transferred back to the master node).
 
-After the `awk` code finished, we check the compressibility of our previously printed string in the following way (of course, you could do whatever else you want here!), however, **the key point is that you write your results in the file `${TMPRESULTSFILE}`.
+After the `awk` code finished, we check the compressibility of our previously printed string in the following way (of course, you could do whatever else you want here!), however, **the key point is that you write your results in the file `${TMPRESULTSFILE}`**:
 
 ```
+	# compress our original file
 	gzip -9 --no-name --keep ${TMPWORKFILE}
+	# get length of file
 	S_len=`/bin/ls -l ${TMPWORKFILE} | awk '{print $5}'`
 	if [ "$S_len" = "0" ]; then
-		# too few elements (less than window size)
+		# too few packets
 		touch ${TMPRESULTSFILE} # just let NEFIAS know that we did our job here (create the file, if not present)
 	else
+		# get length of compressed file
 		C_len=`/bin/ls -l ${TMPWORKFILE}.gz | awk '{print $5}'`
+		# calculate compressibility using bc
 		K=`echo "scale=6;($S_len/$C_len)" | bc`
+		# finally, write the computation's result into the results file
 		echo "${flow}, K=${K}" >> ${TMPRESULTSFILE} # Temporary storage for results until all entries were calculated
-		#echo "${flow}, K=${K}"
 	fi
 	rm -f ${TMPWORKFILE} ${TMPWORKFILE}.gz # cleanup our intermediate files
 ```
