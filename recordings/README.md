@@ -1,8 +1,8 @@
 # NeFiAS sample traffic recordings
 
-These traffic recordings were created with the tool [CCEAP](https://github.com/cdpxe/CCEAP). They implement both, a timing covert channel (TCC) and a "storage" covert channel (SCC) as described in work by Cabuk et al. Both covert channels essentially signal hidden information by modulating the inter-packet gaps (inter-arrival times, IAT) between transmitted packets. The README files in the particular folders provide additional details of the setup.
+These traffic recordings were created with the tool [CCEAP](https://github.com/cdpxe/CCEAP). They contain both, a timing covert channel (TCC) and a "storage" covert channel (SCC) as described in work by Cabuk et al. Both covert channels essentially signal hidden information by modulating the inter-packet gaps (inter-arrival times or "IAT") between transmitted packets. The README files in the particular folders provide additional details of the setup.
 
-For an introduction in covert storage and timing channels, see (Wendzel et al., 2015) below or the website of our [Information Hiding Patterns](https://ih-patterns.blogspot.com/p/introduction.html) project.
+For an introduction on covert storage and timing channels, see (Wendzel et al., 2015) below or the website of our [Information Hiding Patterns](https://ih-patterns.blogspot.com/p/introduction.html) project.
 
 ## Brief overview of sub-directories
 
@@ -10,7 +10,7 @@ For an introduction in covert storage and timing channels, see (Wendzel et al., 
 * TCC_SCC_internet_remotehost: Both channel types transmitted over multiple hosts via Internet-uplink
 * TCC_localhost: Both channel types transmitted only on localhost
 
-For each setup, different timings were applied and different content was signaled. For instance, "ABABAB" signals only the ASCII symbols A and B in a loop while "Faust" signals the first lines of the famous "Faust, pt. 1" by German writer J. W. Goethe. Faust_GZ etc. represent the compressed version of Faust being transmitted. The timings are indirected in the filename, too, e.g. "40_80" means that the short timing interval (binary zero) takes 0.04s while the long interval (binary one) takes 0.08s.
+For each setup, different timings were applied and different content was signaled. For instance, "ABABAB" signals only the ASCII symbols A and B in a loop while "Faust" signals the first lines of the famous "Faust, pt. 1" by German writer J. W. Goethe. Faust_GZ etc. represent the compressed version of Faust being transmitted. The timings are visible in the filename as well, e.g. "40_80" means that the short timing interval (binary zero) takes 0.04s while the long interval (binary one) takes 0.08s.
 
 These traffic recordings were created in 2017.
 
