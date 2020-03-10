@@ -2,7 +2,8 @@
 # Initial version with support for only very few header fields
 # Author: Steffen Wendzel, wendzel@hs-worms.de
 #
-# This file is part of NeFiAS.
+# This file is part of NeFiAS. It was originally part of the WoDiCoF
+# project.
 # 
 # NeFiAS is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
