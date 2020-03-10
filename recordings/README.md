@@ -1,6 +1,6 @@
 # NeFiAS sample traffic recordings
 
-These traffic recordings were created with the tool [CCEAP](https://github.com/cdpxe/CCEAP). They contain both, a timing covert channel (TCC) and a "storage" covert channel (SCC) as described in work by Cabuk et al. Both covert channels essentially signal hidden information by modulating the inter-packet gaps (inter-arrival times or "IAT") between transmitted packets. The README files in the particular folders provide additional details of the setup.
+These traffic recordings were created with the tool [CCEAP](https://github.com/cdpxe/CCEAP). They contain both, a timing covert channel (TCC) and a "storage" covert channel (SCC) as described in work by Cabuk et al. Both covert channels essentially signal hidden information by modulating the inter-packet gaps (inter-arrival times or "IAT") between transmitted packets (such covert channels implement the so-called [Size Modulation](http://ih-patterns.blogspot.com/p/p1-size-modulation-pattern.html) hiding pattern). The README files in the particular folders provide additional details of the setup.
 
 For an introduction on covert storage and timing channels, see (Wendzel et al., 2015) below or the website of our [Information Hiding Patterns](https://ih-patterns.blogspot.com/p/introduction.html) project.
 
