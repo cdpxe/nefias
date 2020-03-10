@@ -255,7 +255,8 @@ $ sudo chmod 770 /home/nefias/nefias/
 
 NeFiAS was used for a few scientific experiments. Papers who used NeFiAS are cited below; if available, their codes are linked here as well.
 
-- Basically the same script like `scripts/kappa_frametime.sh` (minimal differences) was used in (Wendzel et al., 2019) to calculate the compressibility score for network covert channels that modulate packet sizes.
+- Essentially the same functionality like provided by the script `scripts/kappa_frametime.sh` (minimal differences) was used in (Wendzel et al., 2019) to calculate the compressibility score for network covert channels that modulate sizes of succeeding packets (such covert channels implement the so-called [Size Modulation](http://ih-patterns.blogspot.com/p/p1-size-modulation-pattern.html) hiding pattern).
+- Essentially the same functionality like provided by the script `scripts/kappa_IAT.sh` (but different coding, thus different Kappa values) was used in (Keidel et al., 2018) to calculate the compressibility score for network covert channels that modulate inter-arrival times between succeeding network packets (such covert channels implement the so-called [Inter-packet Times](http://ih-patterns.blogspot.com/p/blog-page_40.html) hiding pattern.
 
 # Contributors
 
@@ -268,5 +269,3 @@ The following people contributed substantially to NeFiAS:
 * (Wendzel et al., 2015) S. Wendzel, S. Zander, B. Fechner, C. Herdin: [Pattern-Based Survey and Categorization of Network Covert Channel Techniques](https://doi.org/10.1145/2684195), Computing Surveys (CSUR), Vol. 47(3), ACM, 2015.
 * (Keidel et al., 2018) R. Keidel, S. Wendzel, S. Zillien et al.: [WoDiCoF - A Testbed for the Evaluation of (Parallel) Covert Channel Detection Algorithms](http://dx.doi.org/10.3217/jucs-024-05-0556), Journal of Universal Computer Science (J.UCS), Vol. 24(5), 2018.
 * (Wendzel et al., 2019) S. Wendzel, F. Link, D. Eller, W. Mazurczyk: [Detection of Size Modulation Covert Channels Using Countermeasure Variation](http://www.jucs.org/jucs_25_11/detection_of_size_modulation), Journal of Universal Computer Science (J.UCS), Vol. 25(11), pp. 1396-1416, 2019.
-
-
