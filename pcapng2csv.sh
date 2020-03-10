@@ -1,6 +1,21 @@
 #!/bin/bash
 # Initial version with support for only very few header fields
-# author: Steffen Wendzel, wendzel@hs-worms.de
+# Author: Steffen Wendzel, wendzel@hs-worms.de
+#
+# This file is part of NeFiAS.
+# 
+# NeFiAS is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+# 
+# NeFiAS is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with Foobar.  If not, see <https://www.gnu.org/licenses/>.
 
 OCURRENCE=f # use first occurrence of a field if it occurs multiple times
 HEADER_FIELDS="	-e ip.proto \
