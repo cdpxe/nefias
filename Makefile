@@ -18,3 +18,6 @@ localtestFramelen :
 tgz :
 	tar -czvf ../nefias_current.tgz *
 
+clean :
+	rm -vf chunk_*.gz tmp
+
