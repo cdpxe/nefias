@@ -6,6 +6,8 @@ For an introduction on covert storage and timing channels, see (Wendzel et al., 
 
 ## Brief overview of sub-directories
 
+The Kappa value calculated by the NeFiAS script *kappa_IAT.sh* indicates the presence of a covert timing channel. The script is slightly different to the one used by WoDiCoF in (Keidel et al., 2018), but the essential functionality is the same (the script was simplified for didactic purposes).
+
 * TCC_SCC_ethernet: Both channel types transmitted over a direct and stable Ethernet connection
 * TCC_SCC_internet_remotehost: Both channel types transmitted over multiple hosts via Internet-uplink
 * TCC_localhost: Both channel types transmitted only on localhost
@@ -16,4 +18,5 @@ These traffic recordings were created in 2017.
 
 # References
 
-(Wendzel et al., 2015) S. Wendzel, S. Zander, B. Fechner, C. Herdin (2015): *[Pattern-based Survey and Categorization of Network Covert Channel Techniques](https://dl.acm.org/citation.cfm?doid=2737799.2684195)*, ACM Computing Surveys (CSUR), Vol. 47, Issue 3, pp. 50:1-26, ACM.
+* (Wendzel et al., 2015) S. Wendzel, S. Zander, B. Fechner, C. Herdin (2015): *[Pattern-based Survey and Categorization of Network Covert Channel Techniques](https://dl.acm.org/citation.cfm?doid=2737799.2684195)*, ACM Computing Surveys (CSUR), Vol. 47, Issue 3, pp. 50:1-26, ACM.
+* (Keidel et al., 2018) R. Keidel, S. Wendzel, S. Zillien et al.: [WoDiCoF - A Testbed for the Evaluation of (Parallel) Covert Channel Detection Algorithms](http://dx.doi.org/10.3217/jucs-024-05-0556), Journal of Universal Computer Science (J.UCS), Vol. 24(5), 2018.
