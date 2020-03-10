@@ -174,7 +174,7 @@ NUM_LINES_TMPFILE=`wc -l tmp | awk '{print $1}'` # number of lines in tmp file
 if [ "$KEEP_CHUNKFILES" = "1" ]; then
 	echo "Keeping original chunk files ..."
 else
-	echo -n "Creating chunks from extraction (overall: ${NUM_LINES_TMPFILE} lines split into "
+	echo -n "Creating chunks from extraction (overall: ${NUM_LINES_TMPFILE} lines split into >="
 	# This includes ceiling by checking whether there is some .x, where x!=0.
 	# This solution kills trailing values where x is >0 but <1, (e.g. 7.00481 or something)
 	NUM_CHUNKS=`echo "scale=1;${NUM_LINES_TMPFILE}/${CHUNK_SIZE_IN_LINES}" | bc | tr '.' ' ' | awk '{ if ($2 == 0) { print $1 } else { print ($1 + 1) } }'`
