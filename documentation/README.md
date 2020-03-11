@@ -81,11 +81,13 @@ That's all!
 
 # Running Jobs with NeFiAS
 
-Alright, let's try and see if everything works! On your master node, run the following command, which will use the slaves mentioned in *slaves.cfg*. It will then split the traffic file *mypcap.csv* in a couple of chunks and run the script `scripts/kappaIAT.sh` (some anomaly detection score for inter-arrival times) for these chunks on the slave nodes.
+Alright, let's try and see if everything works! On your master node, run the following command,
+which will use the slaves mentioned in *slaves.cfg*. It will then split the traffic file
+*recordings/TCC_localhost/TCC_20-50_ABABAB.pcap.csv* in a couple of chunks and run the script `scripts/kappa_IAT.sh` (some anomaly detection score for inter-arrival times) for these chunks on the slave nodes.
 
 ```
 $ cd ~/nefias
-$ ./nefias_master.sh --slave-hostconfig=slaves.cfg --slave-script=scripts/kappaIAT.sh --traffic-source=mypcap.csv
+$ ./nefias_master.sh --slave-hostconfig=slaves.cfg --slave-script=scripts/kappa_IAT.sh --traffic-source=recordings/TCC_localhost/TCC_20-50_ABABAB.pcap.csv
 
 ```
 
@@ -95,7 +97,8 @@ If everything worked fine, you should find the results of all slave nodes in you
 $ ls results/
 nefias_11726.chunk_00.results  nefias_11726.chunk_01.results
 ```
-The output of these jobs entirely depends on the scripts you execute on your slave nodes, for instance, above-mentioned script `kappaIAT.sh` calculates a compressibility score (*kappa value*) for all IP flows. Let's have a look:
+The output of these jobs entirely depends on the scripts you execute on your slave nodes, for
+instance, above-mentioned script `kappa_IAT.sh` calculates a compressibility score (*kappa value*) for all IP flows. Let's have a look:
 
 ```
 $ cat results/*
