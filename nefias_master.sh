@@ -148,7 +148,8 @@ echo "ALLBUSY_WAITSEC     = ${ALLBUSY_WAITSEC}sec"
 echo "KEEP_CHUNKFILES     = ${KEEP_CHUNKFILES}"
 
 if [ ! -e ${SLAVE_HOSTCONFIG} ]; then
-	echo "${SLAVE_HOSTCONFIG} does not exist."
+	echo "Critical error: ${SLAVE_HOSTCONFIG} does not exist."
+	exit 9
 else
 	source ${SLAVE_HOSTCONFIG}
 fi
