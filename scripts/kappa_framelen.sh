@@ -48,7 +48,7 @@ for flow in $FLOWS; do
 		# calculate compressibility using bc
 		K=`echo "scale=6;($S_len/$C_len)" | bc`
 		# finally, write the computation's result into the results file
-		echo "${flow}, K=${K}" >> ${TMPRESULTSFILE} # Temporary storage for results until all entries were calculated
+		echo "${flow},WinSize=1000,K=${K}" >> ${TMPRESULTSFILE} # Temporary storage for results until all entries were calculated
 	fi
 	rm -f ${TMPWORKFILE} ${TMPWORKFILE}.gz # cleanup our intermediate files
 done

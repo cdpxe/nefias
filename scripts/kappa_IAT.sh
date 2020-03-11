@@ -43,7 +43,7 @@ for flow in $FLOWS; do
 	else
 		C_len=`/bin/ls -l ${TMPWORKFILE}.gz | awk '{print $5}'`
 		K=`echo "scale=6;($S_len/$C_len)" | bc`
-		echo "${flow}, K=${K}" >> ${TMPRESULTSFILE} # Temporary storage for results until all entries were calculated
+		echo "${flow},WinSize=1000,K=${K}" >> ${TMPRESULTSFILE} # Temporary storage for results until all entries were calculated
 		#echo "${flow}, K=${K}"
 	fi
 	rm -f ${TMPWORKFILE} ${TMPWORKFILE}.gz
