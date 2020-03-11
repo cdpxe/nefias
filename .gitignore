@@ -1,0 +1,5 @@
+/tmp
+/results/*
+slaves.cfg
+nefias.status
+chunk_*
