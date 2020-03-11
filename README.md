@@ -21,5 +21,5 @@ NeFiAS requires only standard Linux tools:
 - `ssh`/`scp`
 - `awk`, `sed`, `tr`, `split` etc.
 - `gzip`
-- `tshark` (optionally, but pretty useful)
+- `tshark` (optional, but pretty useful)
 
