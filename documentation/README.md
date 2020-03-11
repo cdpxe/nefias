@@ -265,7 +265,7 @@ NeFiAS was used for a few scientific experiments. Papers who used NeFiAS are cit
 
 The following people contributed substantially to NeFiAS:
 
-- N.N.
+- Sebastian Zillien, Worms University of Applied Sciences, Germany
 
 # References
 
