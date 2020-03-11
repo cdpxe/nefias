@@ -19,6 +19,9 @@
 # along with Foobar.  If not, see <https://www.gnu.org/licenses/>.
 
 OCURRENCE=f # use first occurrence of a field if it occurs multiple times
+
+# IMPORTANT: only add new -e parameters behind udp.dstport, never change
+#            the order of the fields ip.proto till udp.srcport.
 HEADER_FIELDS="	-e ip.proto \
 		-e ipv6.nxt \
 		-e frame.number \
@@ -33,9 +36,9 @@ HEADER_FIELDS="	-e ip.proto \
 		-e ipv6.dst \
 		-e tcp.srcport \
 		-e tcp.dstport \
-		-e tcp.seq \
 		-e udp.srcport \
-		-e udp.dstport"
+		-e udp.dstport \
+		-e tcp.seq"
 INFILE=$1
 OUTFILE=$2
 TSHARK_CMD="tshark -r ${INFILE} -T fields ${HEADER_FIELDS} -E header=y -E separator=, -E quote=d -E occurrence=${OCURRENCE}"
