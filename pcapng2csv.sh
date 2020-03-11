@@ -33,6 +33,7 @@ HEADER_FIELDS="	-e ip.proto \
 		-e ipv6.dst \
 		-e tcp.srcport \
 		-e tcp.dstport \
+		-e tcp.seq \
 		-e udp.srcport \
 		-e udp.dstport"
 INFILE=$1
@@ -71,7 +72,7 @@ fi
 echo "# Processing file \"${INFILE}\" at `date +"%Y-%m-%d %T %Z%z"`..." >>${LOGFILE} 2>&1
 echo "# Process initiated by user: `whoami`, host: `hostname -f`" >>${LOGFILE} 2>&1
 echo "# Process running under: `uname -ap`." >>${LOGFILE} 2>&1
-${TSHARK_CMD} > ${OUTFILE} 2>>${LOGFILE}
+${TSHARK_CMD} > ${OUTFILE} 2>>${LOGFILE} || exit 9
 TSHARK_RET=$?
 echo "# tshark exited with code: ${TSHARK_RET} [interpretation: success==0, error!=0] at "`date +"%Y-%m-%d %T %Z%z"` >>${LOGFILE} 2>&1
 
