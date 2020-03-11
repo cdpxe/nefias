@@ -153,6 +153,15 @@ else
 	source ${SLAVE_HOSTCONFIG}
 fi
 
+# does ./results exist?
+if [ ! -e ./results ]; then
+	echo "Initially creating directory ./results"
+	mkdir ./results || exit 9
+elif [ ! -d ./results ]; then
+	echo "Critical error: ./results must be a directory!"
+	exit 9
+fi
+
 ##############################################
 # 2. PREPARE OPERATION
 ##############################################
