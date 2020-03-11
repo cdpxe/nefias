@@ -79,6 +79,8 @@ function NEFIAS_INIT_PER_FLOW()
 		ip6_dst=""
 		tcp_srcport=""
 		tcp_dstport=""
+		tcp_ack=""
+		tcp_dst=""
 		udp_srcport=""
 		udp_dstport=""
 		frame_len=""
@@ -112,6 +114,10 @@ function NEFIAS_INIT_PER_FLOW()
 					tcp_srcport=i
 				} else if ($i == "tcp.dstport") {
 					tcp_dstport=i
+				} else if ($i == "tcp.ack") {
+					tcp_ack=i
+				} else if ($i == "tcp.seq") {
+					tcp_seq=i
 				}
 			}
 		}
@@ -142,7 +148,7 @@ function NEFIAS_INIT_PER_FLOW()
 			}
 			
 			if (tcp_srcport != "" && tcp_dstport != "") {
-				printf "-vtcp_srcport="tcp_srcport"  -vtcp_dstport="tcp_dstport" "
+				printf "-vtcp_srcport="tcp_srcport"  -vtcp_dstport="tcp_dstport" -vtcp_ack="tcp_ack" -vtcp_seq="tcp_seq" "
 			} else {
 				printf "-vtcpfalse=1 "
 			}

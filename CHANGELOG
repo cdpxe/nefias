@@ -8,6 +8,7 @@ v-0.8 : 2020-??-??
  - add comment on how to run parallel computations on a slave node
  - allow to search for flows that are either TCP or UDP via "udp+tcp"
  - improved error handling in pcapng2csv.sh
+ - support TCP ack and seq numbers by default
 
 v-0.7 : 2020-03-07
  - initial upload to GitHub

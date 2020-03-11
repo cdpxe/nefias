@@ -38,7 +38,7 @@ HEADER_FIELDS="	-e ip.proto \
 		-e tcp.dstport \
 		-e udp.srcport \
 		-e udp.dstport \
-		-e tcp.seq"
+		-e tcp.seq"  # -e tcp.ack
 INFILE=$1
 OUTFILE=$2
 TSHARK_CMD="tshark -r ${INFILE} -T fields ${HEADER_FIELDS} -E header=y -E separator=, -E quote=d -E occurrence=${OCURRENCE}"
