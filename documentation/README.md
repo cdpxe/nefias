@@ -140,8 +140,25 @@ However, `nefias_master` needs to know that it should use these header fields, s
 **Note:** TShark can generate CSV (textual) output based on the content of PCAP files. You can add custom header fields here as well. To this by modifying the variable `HEADER_FIELDS` in `pcapng2csv.sh`. However, what you NEED to export are the following fields; they MUST appear in the following order: `frame.number,frame.time_relative,frame.len,ip.src,ip.dst,ipv6.src,ipv6.dst,tcp.srcport,tcp.dstport,udp.srcport,udp.dstport`
 
 
+# Local parallelization on slave nodes
 
+An easy way to perform a parallel computation of scripts is to create multiple directory trees for NeFiAS on each slave node and then add each directory tree to the slave configuration file.
 
+For instance, create the following directory structure on one of the slave nodes to run two NeFiAS scripts in parallel (e.g. useful when you have 2 CPU cores):
+
+```
+mkdir /home/nefias/nefias1/{finished,input,results,scripts,tmp}
+mkdir /home/nefias/nefias2/{finished,input,results,scripts,tmp}
+```
+
+And in your slave configuration file (assuming the hostname is *myhost.xyz*):
+
+```
+slaves=(
+   'myhost.xyz:/home/nefias/nefias1'
+   'myhost.xyz:/home/nefias/nefias2'
+)
+```
 
 # Writing own NeFiAS scripts
 

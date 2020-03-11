@@ -20,7 +20,8 @@
 # note: I recommend to use ~nefias/nefias as tmpfs to speed up the 'cat'
 # command and to limit disk I/O!
 
-source ~/nefias/scripts/nefias_lib.sh
+source "`dirname $0`/nefias_lib.sh"
+
 NEFIAS_INIT_PER_FLOW $1 $2 "ip" # || tcp || udp
 
 WINDOWSIZES="1000 1500 2000 2500 3000 4000 5000"

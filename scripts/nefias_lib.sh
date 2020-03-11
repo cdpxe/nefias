@@ -23,7 +23,7 @@ function NEFIAS_INIT()
 	export DIRNAME=`dirname $1 | sed 's/\/\//\//'`
 	export TMPWORKFILE=/tmp/nefias.${RANDOM} # store intermediate results in this file; MAKE SURE TO DELETE IF AFTERWARDS!
 	export JOBNAME=$2
-	export TMPPKTSFILE=/tmp/${JOBNAME}_nefias_all_pkts # storage file for the ("-free) packet CSV (probably without header)
+	export TMPPKTSFILE=/tmp/${JOBNAME}_nefias_allpkts_${RANDOM} # storage file for the ("-free) packet CSV (probably without header)
 	export TMPRESULTSFILE=$DIRNAME/../tmp/${JOBNAME}.results # store your results here; will moved to final location by NEFIASH_FINISH
 	
 	# decompress the file so that we can use it
