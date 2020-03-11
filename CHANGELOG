@@ -9,6 +9,7 @@ v-0.8 : 2020-??-??
  - allow to search for flows that are either TCP or UDP via "udp+tcp"
  - improved error handling in pcapng2csv.sh
  - support TCP ack and seq numbers by default
+ - add script to that can detect message ordering CCs in TCP seq. no.
 
 v-0.7 : 2020-03-07
  - initial upload to GitHub
