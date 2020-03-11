@@ -6,6 +6,7 @@ v-0.8 : 2020-??-??
  - add kappa framelen+IAT versions that support multiple window sizes
  - allow parallel computation on a single slave node (tested)
  - add comment on how to run parallel computations on a slave node
+ - allow to search for flows that are either TCP or UDP via "udp+tcp"
 
 v-0.7 : 2020-03-07
  - initial upload to GitHub

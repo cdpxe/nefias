@@ -180,7 +180,7 @@ done
 NEFIAS_FINISH
 ```
 
-The code above first includes the functionality of the NeFiAS library, then initiates the job with NEFIAS_INIT_PER_FLOW. The first two parameters (filename to process as well as jobname) are provided by NeFiAS itself and need to be passed. The third parameter (`"tcp"`) means that you want to focus on TCP flows (defined by source and destination IPv4/v6 address and TCP source/destination port). However, you can also pass the parameter (`"udp"`) for UDP flows or `"ip"` for IPv4/v6 flows (i.e. one flow may contain multiple TCP streams and UDP "connections").
+The code above first includes the functionality of the NeFiAS library, then initiates the job with NEFIAS_INIT_PER_FLOW. The first two parameters (filename to process as well as jobname) are provided by NeFiAS itself and need to be passed. The third parameter (`"tcp"`) means that you want to focus on TCP flows (defined by source and destination IPv4/v6 address and TCP source/destination port). However, you can also pass the parameter (`"udp"`) for UDP flows, `"udp+tcp"` for all UDP and all TCP flows, or`"ip"` for IPv4/v6 flows (i.e. one flow may contain multiple TCP streams and UDP "connections").
 
 Next, we see a loop to iterate trough all flows found in the data chunk that the node just received. Finally, NEFIAS_FINISH performs the necessary steps to finalize the work on the data chunk.
 

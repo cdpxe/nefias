@@ -52,15 +52,23 @@ function NEFIAS_INIT_PER_FLOW()
 	
 	# check whether we need to focus on UDP/TCP flows
 	case $3 in
+	tcp+udp|udp+tcp)
+		TCP="1"
+		UDP="1"
+		;;
 	tcp)
 		TCP="1"
 		;;
 	udp)
 		UDP="1"
 		;;
-	ip|ip6|ipv4|ipv6|ipv4+ipv6|ip4+ip6|*)
+	ip|ip6|ipv4|ipv6|ipv4+ipv6|ip4+ip6)
 		echo -n # default case (i.e., just IPv4+IPv6)
 		;;
+	*)
+		echo "ERROR: Input parameter not supported by NEFIAS_INIT_PER_FLOW" >&2
+		exit 9
+		;; #NOTREACHED
 	esac
 	
 	export FLOWFIELDS=`echo ${HEADER} | awk -F\, -vudp=${UDP} -vtcp=${TCP} '
@@ -98,7 +106,8 @@ function NEFIAS_INIT_PER_FLOW()
 				} else if ($i == "udp.dstport") {
 					udp_dstport=i
 				}
-			} else if (tcp == "1") {
+			} # do not use "else" here since "udp+tcp" is possible as a parameter
+			if (tcp == "1") {
 				if ($i == "tcp.srcport") {
 					tcp_srcport=i
 				} else if ($i == "tcp.dstport") {
@@ -108,24 +117,39 @@ function NEFIAS_INIT_PER_FLOW()
 		}
 	}
 	END {
+		error = 0
 		if ((ip_src == ip_dst && ip_src == "" ) && (ip6_src == ip6_dst && ip6_src == "")) {
 			printf("FATAL ERROR_code_nl131: did not find ip[v6].src and/or ip[v6].dst field!\n")
-		} else if (udp == "1" && (udp_srcport == "" || udp_dstport == "" )) {
+			error = 1
+		}
+		if (udp == "1" && (udp_srcport == "" || udp_dstport == "" ) && tcp == "0") {
 			printf("FATAL ERROR_code_nl141: did not find and UDP flows!\n")
-		} else if (tcp == "1" && (tcp_srcport == "" || tcp_dstport == "" )) {
+			error = 1
+		}
+		if (tcp == "1" && (tcp_srcport == "" || tcp_dstport == "" ) && udp == "0") {
 			printf("FATAL ERROR_code_nl151: did not find and TCP flows!\n")
-		} else {
+			error = 1
+		}
+		
+		if (error == 0) {
 			# provide the awk -v parameter to import the variables when we extract the flows in the next step
 			# keep the white-spaces after potentially empty variables, just in case
 			printf "-vip_src="ip_src"  -vip_dst="ip_dst"  -vip6_src="ip6_src"  -vip6_dst="ip6_dst"  -vframe_len="frame_len" -vframe_time_relative="frame_time_relative" "
-			if (udp == "1") {
-				printf "-vudp_srcport="udp_srcport"  -vudp_dstport="udp_dstport
-			} else if (tcp == "1") {
-				printf "-vtcp_srcport="tcp_srcport"  -vtcp_dstport="tcp_dstport
+			if (udp_srcport != "" && udp_dstport != "") {
+				printf "-vudp_srcport="udp_srcport"  -vudp_dstport="udp_dstport" "
+			} else {
+				printf "-vudpfalse=1 "
+			}
+			
+			if (tcp_srcport != "" && tcp_dstport != "") {
+				printf "-vtcp_srcport="tcp_srcport"  -vtcp_dstport="tcp_dstport" "
+			} else {
+				printf "-vtcpfalse=1 "
 			}
 			printf("\n");
 		}
 	}'`
+
 	# do not include line 1 (thus "+2") as this is the $HEADER
 	tail -n +2 ${DIRNAME}/../tmp/${FILENAME} | sed 's/\"//g' > ${TMPPKTSFILE}
 	
@@ -144,7 +168,7 @@ function NEFIAS_INIT_PER_FLOW()
 		if (udp == "1" || tcp == "1") {
 			if (tcp_srcport != "" && tcp_srcport != "") {
 				#tcp
-				# addvtwo commas at tail for UDP values
+				# add two commas at tail for UDP values
 				# (not three, because nothing is necessarily behind the udp.dstport!)
 				printf $tcp_srcport","$tcp_dstport",,";
 			} else if(udp_srcport != "" && udp_srcport != "") {
