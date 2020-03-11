@@ -24,12 +24,18 @@
 # This script utilizes different window sizes to ease the process of finding
 # a high-quality threshold for K.
 #
+# Further notes:
+# - The window size used in the original paper was 200.
+# - Four different ways to perform the string coding were proposed in the paper.
+#   Only the best performing string coding variant is implemented in this NeFiAS
+#   script.
+#
 # This script receives the following parameters: ./script [chunk] [jobname]
 
 source "`dirname $0`/nefias_lib.sh"
 NEFIAS_INIT_PER_FLOW $1 $2 "tcp"
 
-WINDOWSIZES="200" # 500 1000 2500 5000"
+WINDOWSIZES="200 500 1000 2500 5000"
 
 for windowsize in $WINDOWSIZES; do
 	for flow in $FLOWS; do
@@ -53,8 +59,8 @@ for windowsize in $WINDOWSIZES; do
 					output = $tcp_seq "A"
 					previous = $tcp_seq
 				} else {
-					# Wendzel (2019): best performance provided by
-					# """str(|diff|) || ( |diff| % 2 ? ’A’ : ’B’ )"""
+					# Wendzel (2019): best performance provided by the following
+					# string coding: str(|diff|) || ( |diff| % 2 ? "A" : "B" )
 					diff = $tcp_seq - previous
 					output = output abs(diff) (abs(diff) % 2 ? "A" : "B") 
 					previous = $tcp_seq
@@ -63,7 +69,7 @@ for windowsize in $WINDOWSIZES; do
 			}
 		}
 		END {
-			# make sure the window is filled with enough pkts (max defined by head -n)
+			# make sure the window is filled with enough segments
 			if (counter >= winsize) printf output;
 		}' > ${TMPWORKFILE}
 
