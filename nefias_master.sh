@@ -25,7 +25,9 @@ SLAVE_USERNAME="nefias"
 SLAVE_SCRIPT="scripts/kappa_IAT.sh"
 TRAFFIC_SOURCE="mypcap.csv"
 CHUNK_SIZE_IN_LINES=10000
-VALUES="frame.number,frame.time_relative,frame.len,ip.src,ip.dst,ipv6.src,ipv6.dst,tcp.srcport,tcp.dstport,udp.srcport,udp.dstport"
+# IMPORTANT: Do not manipulate the values from frame.number to udp.dstport, their order is crucial for NeFiAS! However, feel free to *add*
+# new values at the end.
+VALUES="frame.number,frame.time_relative,frame.len,ip.src,ip.dst,ipv6.src,ipv6.dst,tcp.srcport,tcp.dstport,udp.srcport,udp.dstport,tcp.seq"
 JOBNAME="nefias_${RANDOM}"
 KEEP_CHUNKFILES="0"
 
