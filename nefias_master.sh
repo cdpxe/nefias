@@ -147,6 +147,7 @@ echo "JOBNAME             = ${JOBNAME}"
 echo "ALLBUSY_WAITSEC     = ${ALLBUSY_WAITSEC}sec"
 echo "KEEP_CHUNKFILES     = ${KEEP_CHUNKFILES}"
 
+# does the slave config file exist?
 if [ ! -e ${SLAVE_HOSTCONFIG} ]; then
 	echo "Critical error: ${SLAVE_HOSTCONFIG} does not exist."
 	exit 9
@@ -160,6 +161,12 @@ if [ ! -e ./results ]; then
 	mkdir ./results || exit 9
 elif [ ! -d ./results ]; then
 	echo "Critical error: ./results must be a directory!"
+	exit 9
+fi
+
+# does the slave script exist?
+if [ ! -e ${SLAVE_SCRIPT} ]; then
+	echo "Critical error: ${SLAVE_SCRIPT} does not exist."
 	exit 9
 fi
 
