@@ -1,4 +1,4 @@
-#/bin/bash -e
+#!/bin/bash -e
 # This file is part of NeFiAS.
 # 
 # NeFiAS is free software: you can redistribute it and/or modify
