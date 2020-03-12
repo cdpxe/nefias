@@ -188,7 +188,7 @@ Every NeFiAS script basically looks as follows (this code is executed for every 
 
 ```
 #!/bin/bash
-source ~/nefias/scripts/nefias_lib.sh
+source "`dirname $0`/nefias_lib.sh"
 NEFIAS_INIT_PER_FLOW $1 $2 "tcp"
 
 for flow in $FLOWS; do
@@ -209,7 +209,7 @@ To exemplify, let us have a look on a typical content of above-mentioned `for` l
 # kappa_framelen.sh: calculate Kappa compressibility score based on frame length of a flows's packets
 # This script receives the following parameters: ./script [chunk] [jobname]
 
-source ~/nefias/scripts/nefias_lib.sh
+source "`dirname $0`/nefias_lib.sh"
 NEFIAS_INIT_PER_FLOW $1 $2 "ip" # || tcp || udp
 
 for flow in $FLOWS; do
@@ -289,6 +289,7 @@ $ sudo chown nefias:nefias /home/nefias/nefias/
 $ sudo chmod 770 /home/nefias/nefias/
 ```
 
+
 # Academic references to NeFiAS
 
 NeFiAS was used for a few scientific experiments. Papers who used NeFiAS are cited below; if available, their codes are linked here as well.
@@ -297,11 +298,13 @@ NeFiAS was used for a few scientific experiments. Papers who used NeFiAS are cit
 - Essentially the same functionality like provided by the script `scripts/kappa_frametime.sh` (minimal differences) was used in (Wendzel et al., 2019) to calculate the compressibility score for network covert channels that modulate sizes of succeeding packets (such covert channels implement the so-called [Size Modulation](http://ih-patterns.blogspot.com/p/p1-size-modulation-pattern.html) hiding pattern).
 - Essentially the same functionality like provided by the script `scripts/kappa_IAT.sh` (but different coding, thus different Kappa values) was used in (Keidel et al., 2018) to calculate the compressibility score for network covert channels that modulate inter-arrival times between succeeding network packets (such covert channels implement the so-called [Inter-packet Times](http://ih-patterns.blogspot.com/p/blog-page_40.html) hiding pattern.
 
+
 # Contributors
 
 The following people contributed substantially to NeFiAS:
 
 - Sebastian Zillien, Worms University of Applied Sciences, Germany
+
 
 # References
 
