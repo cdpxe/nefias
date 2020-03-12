@@ -6,6 +6,8 @@ v-0.8 : 2020-??-??
  - add kappa framelen+IAT versions that support multiple window sizes
  - allow parallel computation on a single slave node (tested)
  - add comment on how to run parallel computations on a slave node
+ - add comment on addressing errors related to limited stack size
+ - several additional improvements of documentation / readme files
  - allow to search for flows that are either TCP or UDP via "udp+tcp"
  - improved error handling in pcapng2csv.sh
  - support TCP ack and seq numbers by default
