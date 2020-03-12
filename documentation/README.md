@@ -86,7 +86,7 @@ Likely, you will receive an error message like `argument list too long` sooner o
 **Solution 1:** Decrease the size of chunks (in lines). This will decrease the required stack space.
 
 
-**Solution 1:** You can increase the stack size for the `nefias` user in each slave node's */etc/security/limits.conf*.
+**Solution 2:** You can increase the stack size for the `nefias` user in each slave node's */etc/security/limits.conf*.
 
 For instance, you could add the following line:
 
@@ -96,8 +96,6 @@ nefias  hard	stack 65000
 ```
 
 This provides a stack space of 65.000 kBytes for the `nefias` user.
-
-**Solution 2:** Decrease the size of chunks (in lines). This will also decrease the required stack space
 
 # Running Jobs with NeFiAS
 
