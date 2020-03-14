@@ -26,8 +26,18 @@ function NEFIAS_INIT()
 	export TMPPKTSFILE=/tmp/${JOBNAME}_nefias_allpkts_${RANDOM} # storage file for the ("-free) packet CSV (probably without header)
 	export TMPRESULTSFILE=$DIRNAME/../tmp/${JOBNAME}.results # store your results here; will moved to final location by NEFIASH_FINISH
 	
+	# check presence of file
+	if [ ! -e ${1}.gz ]; then
+		echo "ERROR: File ${1}.gz does not exist!"
+		exit
+	fi
+	
 	# decompress the file so that we can use it
 	gzip -d ${1}.gz
+	if [ "$?" = "1" ]; then
+		echo "ERROR: gzip -d ${1}.gz did not work!"
+		exit
+	fi
 	
 	# move the file to the tmp folder to *lock it*
 	mv $1 $DIRNAME/../tmp/$FILENAME

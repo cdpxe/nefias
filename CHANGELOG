@@ -12,6 +12,7 @@ MINOR:
  - several additional improvements of documentation / readme files
  - allow to search for flows that are either TCP or UDP via "udp+tcp"
  - add script to that can detect message ordering CCs in TCP seq. no.
+ - slightly improved error checking in scripts/nefias_lib.sh
 SECURITY FIXES:
  - none
 FIXES:
