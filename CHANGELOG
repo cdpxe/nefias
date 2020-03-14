@@ -1,18 +1,19 @@
 v-0.8 : 2020-??-??
 MAJOR:
- - none
+ - allow parallel computation on a single slave node (tested)
+ - add new script to that can detect message ordering CCs in TCP seq. #
+ - substantially extended the documentation, in particular:
+   - add comment on how to run parallel computations on a slave node
+   - add comment on addressing errors related to limited stack size
+   - several additional improvements of documentation
+   - added some new readme files to describe traffic recorings and
+     detection scripts
 MINOR:
  - support TCP ack and seq numbers by default
  - tiny improvements of code and directory structure; added some sample
    traffic recrodings
  - add kappa framelen+IAT versions that support multiple window sizes
- - allow parallel computation on a single slave node (tested)
- - add comment on how to run parallel computations on a slave node
- - add comment on addressing errors related to limited stack size
- - several additional improvements of documentation / readme files
  - allow to search for flows that are either TCP or UDP via "udp+tcp"
- - add script to that can detect message ordering CCs in TCP seq. no.
- - slightly improved error checking in scripts/nefias_lib.sh
 SECURITY FIXES:
  - none
 FIXES:
@@ -20,6 +21,7 @@ FIXES:
    (and that ./results is a directory)
  - fix pre-calculation of required chunks in string output
  - improved error handling in pcapng2csv.sh
+ - slightly improved error checking in scripts/nefias_lib.sh
 
 v-0.7 : 2020-03-07
  - initial upload to GitHub
