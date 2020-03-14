@@ -1,2 +1,4 @@
-- IPv6-Support testen
-- UDP-Suppor testen
+# Major
+- add additional error checks (did commands return the correct values, i.e. were they successful?)
+- test IPv6 support
+- test UDP support
