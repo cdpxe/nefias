@@ -1,17 +1,24 @@
 v-0.8 : 2020-??-??
+MAJOR:
+ - none
+MINOR:
+ - support TCP ack and seq numbers by default
  - tiny improvements of code and directory structure; added some sample
    traffic recrodings
- - make sure ./results, $SLAVE_SCRIPT and $SLAVE_HOSTCONFIG files exist
-   (and that ./results is a directory)
  - add kappa framelen+IAT versions that support multiple window sizes
  - allow parallel computation on a single slave node (tested)
  - add comment on how to run parallel computations on a slave node
  - add comment on addressing errors related to limited stack size
  - several additional improvements of documentation / readme files
  - allow to search for flows that are either TCP or UDP via "udp+tcp"
- - improved error handling in pcapng2csv.sh
- - support TCP ack and seq numbers by default
  - add script to that can detect message ordering CCs in TCP seq. no.
+SECURITY FIXES:
+ - none
+FIXES:
+ - make sure ./results, $SLAVE_SCRIPT and $SLAVE_HOSTCONFIG files exist
+   (and that ./results is a directory)
+ - fix pre-calculation of required chunks in string output
+ - improved error handling in pcapng2csv.sh
 
 v-0.7 : 2020-03-07
  - initial upload to GitHub
