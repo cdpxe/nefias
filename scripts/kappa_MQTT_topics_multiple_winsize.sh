@@ -1,4 +1,7 @@
 #!/bin/bash
+# (C) 2020 Steffen Wendzel, wendzel (at) hs-worms (dot) de
+#     http://www.wendzel.de
+#
 # This file is part of NeFiAS.
 # 
 # NeFiAS is free software: you can redistribute it and/or modify
@@ -33,20 +36,20 @@ for windowsize in $WINDOWSIZES; do
 				i=0
 				found=0
 				topic_number=0
-				print "checking for "$mqtt_topic" ..."
+	#			print "checking for "$mqtt_topic" ..."
 				for (i in topics) {
 					if (topics[i] == $mqtt_topic) {
-						print "found (" i ")"
+	#					print "found (" i ")"
 						found=1
 						topic_number=i
 					}
 				}
 				if (found == 0) {
-					print "   not found. adding."
+	#				print "   not found. adding."
 					# add the new topic
 					topics[length(topics)+1]=$mqtt_topic
 					topic_number=length(topics)
-					print "      len of topics[] is now "length(topics)
+	#				print "      len of topics[] is now "length(topics)
 				}
 				output = output topic_number
 				counter++;
@@ -56,7 +59,7 @@ for windowsize in $WINDOWSIZES; do
 			# make sure the window is filled with enough pkts (max defined by head -n)
 			if (counter >= winsize) print output;
 		}' > ${TMPWORKFILE}
-		echo -n ">>>"; cat ${TMPWORKFILE}; echo "<<<"
+	#	echo -n ">>>"; cat ${TMPWORKFILE}; echo "<<<"
 		gzip -9 --no-name --keep ${TMPWORKFILE}
 		S_len=`/bin/ls -l ${TMPWORKFILE} | awk '{print $5}'`
 		if [ "$S_len" = "0" ]; then
