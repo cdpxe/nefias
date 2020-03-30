@@ -14,7 +14,7 @@
 # You should have received a copy of the GNU General Public License
 # along with Foobar.  If not, see <https://www.gnu.org/licenses/>.
 
-NEFIAS_VERSION="0.7-alpha"
+NEFIAS_VERSION="0.7.1-alpha"
 NEFIAS_LICENSE="GPLv3"
 EXECUTABLE=$0
 DEBUG="0"
@@ -50,6 +50,7 @@ supported parameters:
  --traffic-source=mypcap.csv   -- source script that we need to split
  --chunk-size-in-lines=10000   -- split into chunkes of 10k lines
  --values="frame.number,..."   -- list of PCAP parameters to consider [***]
+ --add-values="mqtt.topic"     -- add some selected values to the defaults
  --jobname="MyJob-..."         -- if you want to specify an own job name
  --allbusy-waitsec=5           -- after how many seconds should NEFIAS
                                   try again to find idle slave nodes if
@@ -104,6 +105,10 @@ case $i in
 	    ;;
     -v=*|--values=*)
 	    VALUES="${i#*=}"
+	    shift # past argument=value
+	    ;;
+	--add-values=*)
+	    VALUES="${VALUES},${i#*=}" # just add the new values to the existing (default) ones
 	    shift # past argument=value
 	    ;;
     -j=*|--jobname=*)
@@ -169,6 +174,12 @@ fi
 # does the slave script exist?
 if [ ! -e ${SLAVE_SCRIPT} ]; then
 	echo "Critical error: ${SLAVE_SCRIPT} does not exist."
+	exit 9
+fi
+
+# does the traffic source exist?
+if [ ! -e ${TRAFFIC_SOURCE} ]; then
+	echo "Critical error: ${TRAFFIC_SOURCE} does not exist."
 	exit 9
 fi
 

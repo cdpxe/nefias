@@ -1,5 +1,8 @@
 # NeFiAS Script Library
 #
+# (C) 2020 Steffen Wendzel, wendzel (at) hs-worms (dot) de
+#     http://www.wendzel.de
+#
 # This file is part of NeFiAS.
 #
 # Do not use this file directly, just include it in your scripts.
@@ -48,6 +51,7 @@ function NEFIAS_INIT()
 
 # ip.src,ip.dst,ipv6.src,ipv6.dst
 # [tcp.srcport,tcp.dstport,udp.srcport,udp.dstport]
+# [[more parameters, such as mqtt.topic]]
 function NEFIAS_INIT_PER_FLOW()
 {
 	UDP="0"
@@ -83,6 +87,8 @@ function NEFIAS_INIT_PER_FLOW()
 	
 	export FLOWFIELDS=`echo ${HEADER} | awk -F\, -vudp=${UDP} -vtcp=${TCP} '
 	{
+		frame_time_relative=""
+		frame_len=""
 		ip_src=""
 		ip_dst=""
 		ip6_src=""
@@ -93,8 +99,9 @@ function NEFIAS_INIT_PER_FLOW()
 		tcp_dst=""
 		udp_srcport=""
 		udp_dstport=""
-		frame_len=""
-		frame_time_relative=""
+		
+		# non-essential protocols
+		mqtt_topic=""
 		
 		for(i = 1; i <= NF; i++) {
 			if ($i == "ip.src") {
@@ -128,6 +135,8 @@ function NEFIAS_INIT_PER_FLOW()
 					tcp_ack=i
 				} else if ($i == "tcp.seq") {
 					tcp_seq=i
+				} else if ($i == "mqtt.topic") {
+					mqtt_topic=i
 				}
 			}
 		}
@@ -158,7 +167,7 @@ function NEFIAS_INIT_PER_FLOW()
 			}
 			
 			if (tcp_srcport != "" && tcp_dstport != "") {
-				printf "-vtcp_srcport="tcp_srcport"  -vtcp_dstport="tcp_dstport" -vtcp_ack="tcp_ack" -vtcp_seq="tcp_seq" "
+				printf "-vtcp_srcport="tcp_srcport"  -vtcp_dstport="tcp_dstport" -vtcp_ack="tcp_ack" -vtcp_seq="tcp_seq" -vmqtt_topic="mqtt_topic" "
 			} else {
 				printf "-vtcpfalse=1 "
 			}

@@ -1,7 +1,8 @@
-v-0.8 : 2020-??-??
+v-0.7.1 : 2020-??-??
 MAJOR:
  - allow parallel computation on a single slave node (tested)
  - add new script to that can detect message ordering CCs in TCP seq. #
+ - add new script to detect CCs embedded in MQTT topics
  - substantially extended the documentation, in particular:
    - add comment on how to run parallel computations on a slave node
    - add comment on addressing errors related to limited stack size
@@ -14,11 +15,12 @@ MINOR:
    traffic recrodings
  - add kappa framelen+IAT versions that support multiple window sizes
  - allow to search for flows that are either TCP or UDP via "udp+tcp"
+ - add -add-values="..." parameter to nefias_master
 SECURITY FIXES:
  - none
 FIXES:
- - make sure ./results, $SLAVE_SCRIPT and $SLAVE_HOSTCONFIG files exist
-   (and that ./results is a directory)
+ - make sure ./results, $SLAVE_SCRIPT, $SLAVE_HOSTCONFIG, $TRAFFIC_SOURCE files
+   exist (and that ./results is a directory)
  - fix pre-calculation of required chunks in string output
  - improved error handling in pcapng2csv.sh
  - slightly improved error checking in scripts/nefias_lib.sh
