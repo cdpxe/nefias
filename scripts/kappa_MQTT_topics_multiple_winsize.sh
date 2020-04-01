@@ -22,17 +22,18 @@
 # This script receives the following parameters: ./script [chunk] [jobname]
 
 source "`dirname $0`/nefias_lib.sh"
-NEFIAS_INIT_PER_FLOW $1 $2 "tcp"
+NEFIAS_INIT_PER_FLOW $1 $2 "ip"
 
 WINDOWSIZES="100 500 750 1000 1500 1750 2000 2500"
 
 for windowsize in $WINDOWSIZES; do
 	for flow in $FLOWS; do
 		# always get the first $windowsize packets of that flow and calculate the kappa value based on frame.time_relative.
-		cat ${TMPPKTSFILE} | grep $flow | head -n ${windowsize} | awk -F\, ${FLOWFIELDS} -vwinsize=${windowsize} \
+echo "DEBUG: grepping flow=>>>$flow<<<"
+		cat ${TMPPKTSFILE} | grep $flow | awk -F\, ${FLOWFIELDS} -vwinsize=${windowsize} \
 		'BEGIN{ previous=0; output=""; counter=0 }
 		{
-			if ($mqtt_topic != "") {
+			if ($mqtt_topic != "" && counter < winsize) {
 				i=0
 				found=0
 				topic_number=0
