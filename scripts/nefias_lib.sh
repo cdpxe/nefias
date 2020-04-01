@@ -135,9 +135,11 @@ function NEFIAS_INIT_PER_FLOW()
 					tcp_ack=i
 				} else if ($i == "tcp.seq") {
 					tcp_seq=i
-				} else if ($i == "mqtt.topic") {
-					mqtt_topic=i
 				}
+			}
+			# other protocols go here
+			if ($i == "mqtt.topic") {
+					mqtt_topic=i
 			}
 		}
 	}
@@ -167,9 +169,12 @@ function NEFIAS_INIT_PER_FLOW()
 			}
 			
 			if (tcp_srcport != "" && tcp_dstport != "") {
-				printf "-vtcp_srcport="tcp_srcport"  -vtcp_dstport="tcp_dstport" -vtcp_ack="tcp_ack" -vtcp_seq="tcp_seq" -vmqtt_topic="mqtt_topic" "
+				printf "-vtcp_srcport="tcp_srcport"  -vtcp_dstport="tcp_dstport" -vtcp_ack="tcp_ack" -vtcp_seq="tcp_seq" "
 			} else {
 				printf "-vtcpfalse=1 "
+			}
+			if (mqtt_topic != "") {
+				printf "-vmqtt_topic="mqtt_topic" "
 			}
 			printf("\n");
 		}
