@@ -24,34 +24,36 @@
 source "`dirname $0`/nefias_lib.sh"
 NEFIAS_INIT_PER_FLOW $1 $2 "ip"
 
-WINDOWSIZES="100 500 750 1000 1500 1750 2000 2500"
+WINDOWSIZES="100 500 750 1000 1500 1750 2000 2500 3000"
 
 for windowsize in $WINDOWSIZES; do
 	for flow in $FLOWS; do
 		# always get the first $windowsize packets of that flow and calculate the kappa value based on frame.time_relative.
 		cat ${TMPPKTSFILE} | grep $flow | awk -F\, ${FLOWFIELDS} -vwinsize=${windowsize} \
-		'BEGIN{ previous=0; output=""; counter=0 }
+		'BEGIN{ last_topic=99999; previous=0; output=""; counter=0 }
 		{
 			if ($mqtt_topic != "" && counter < winsize) {
 				i=0
 				found=0
 				topic_number=0
-	#			print "checking for "$mqtt_topic" ..."
 				for (i in topics) {
 					if (topics[i] == $mqtt_topic) {
-	#					print "found (" i ")"
 						found=1
 						topic_number=i
 					}
 				}
 				if (found == 0) {
-	#				print "   not found. adding."
 					# add the new topic
 					topics[length(topics)+1]=$mqtt_topic
 					topic_number=length(topics)
-	#				print "      len of topics[] is now "length(topics)
 				}
-				output = output topic_number
+				# encode this in a way that topic-CHANGES get some extra character "!" here
+				if (topic_number == last_topic) {
+					output = output topic_number
+				} else {
+					output = output topic_number "!"
+				}
+				last_topic = topic_number
 				counter++;
 			}			
 		}
@@ -59,7 +61,7 @@ for windowsize in $WINDOWSIZES; do
 			# make sure the window is filled with enough pkts (max defined by head -n)
 			if (counter >= winsize) print output;
 		}' > ${TMPWORKFILE}
-	#	echo -n ">>>"; cat ${TMPWORKFILE}; echo "<<<"
+		#echo -n ">>>"; cat ${TMPWORKFILE}; echo "<<<"
 		gzip -9 --no-name --keep ${TMPWORKFILE}
 		S_len=`/bin/ls -l ${TMPWORKFILE} | awk '{print $5}'`
 		if [ "$S_len" = "0" ]; then
