@@ -29,7 +29,6 @@ WINDOWSIZES="100 500 750 1000 1500 1750 2000 2500"
 for windowsize in $WINDOWSIZES; do
 	for flow in $FLOWS; do
 		# always get the first $windowsize packets of that flow and calculate the kappa value based on frame.time_relative.
-echo "DEBUG: grepping flow=>>>$flow<<<"
 		cat ${TMPPKTSFILE} | grep $flow | awk -F\, ${FLOWFIELDS} -vwinsize=${windowsize} \
 		'BEGIN{ previous=0; output=""; counter=0 }
 		{
