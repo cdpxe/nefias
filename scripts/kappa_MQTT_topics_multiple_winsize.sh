@@ -19,7 +19,11 @@
 #
 # kappa_MQTT_topics_multiple_winsize.sh: calculate Kappa compressibility
 # score based on MQTT topics of flows for different window sizes.
+#
 # This script receives the following parameters: ./script [chunk] [jobname]
+#
+# Output format:
+# <flow (CSV)>, window-size, kappa, number-of-topic-changes-within-winsize-pkts
 
 source "`dirname $0`/nefias_lib.sh"
 NEFIAS_INIT_PER_FLOW $1 $2 "ip"
@@ -30,7 +34,7 @@ for windowsize in $WINDOWSIZES; do
 	for flow in $FLOWS; do
 		# always get the first $windowsize packets of that flow and calculate the kappa value based on frame.time_relative.
 		cat ${TMPPKTSFILE} | grep $flow | awk -F\, ${FLOWFIELDS} -vwinsize=${windowsize} \
-		'BEGIN{ last_topic=99999; previous=0; output=""; counter=0 }
+		'BEGIN{ last_topic=99999; previous=0; output=""; topic_changes=0; counter=0 }
 		{
 			if ($mqtt_topic != "" && counter < winsize) {
 				i=0
@@ -52,6 +56,7 @@ for windowsize in $WINDOWSIZES; do
 					output = output topic_number
 				} else {
 					output = output topic_number "!"
+					topic_changes++
 				}
 				last_topic = topic_number
 				counter++;
@@ -59,8 +64,11 @@ for windowsize in $WINDOWSIZES; do
 		}
 		END {
 			# make sure the window is filled with enough pkts (max defined by head -n)
-			if (counter >= winsize) print output;
+			if (counter >= winsize) {
+				print output" "topic_changes
+			}
 		}' > ${TMPWORKFILE}
+		TOPIC_CHANGES=`cat ${TMPWORKFILE} | awk '{print $2}'`
 		#echo -n ">>>"; cat ${TMPWORKFILE}; echo "<<<"
 		gzip -9 --no-name --keep ${TMPWORKFILE}
 		S_len=`/bin/ls -l ${TMPWORKFILE} | awk '{print $5}'`
@@ -70,7 +78,7 @@ for windowsize in $WINDOWSIZES; do
 		else
 			C_len=`/bin/ls -l ${TMPWORKFILE}.gz | awk '{print $5}'`
 			K=`echo "scale=6;($S_len/$C_len)" | bc`
-			echo "${flow},WinSize=${windowsize},K=${K}" >> ${TMPRESULTSFILE} # Temporary storage for results until all entries were calculated
+			echo "${flow},${windowsize},${K},${TOPIC_CHANGES}" >> ${TMPRESULTSFILE} # Temporary storage for results until all entries were calculated
 			#echo "${flow}, K=${K}"
 		fi
 		rm -f ${TMPWORKFILE} ${TMPWORKFILE}.gz
