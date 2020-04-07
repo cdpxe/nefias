@@ -39,7 +39,7 @@ HEADER_FIELDS="	-e ip.proto \
 		-e udp.srcport \
 		-e udp.dstport \
 		-e tcp.seq \
-		-e mqtt.topic"  # -e tcp.ack
+		-e mqtt.topic -e mqtt.msgtype -e mqtt.clientid -e mqtt.disconnect.reason_code"  # -e tcp.ack
 INFILE=$1
 OUTFILE=$2
 TSHARK_CMD="tshark -r ${INFILE} -T fields ${HEADER_FIELDS} -E header=y -E separator=, -E quote=d -E occurrence=${OCURRENCE}"

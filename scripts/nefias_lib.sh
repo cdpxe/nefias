@@ -102,6 +102,9 @@ function NEFIAS_INIT_PER_FLOW()
 		
 		# non-essential protocols
 		mqtt_topic=""
+		mqtt_msgtype=""
+		mqtt_clientid=""
+		mqtt_disconnect_reason_code=""
 		
 		for(i = 1; i <= NF; i++) {
 			if ($i == "ip.src") {
@@ -139,7 +142,13 @@ function NEFIAS_INIT_PER_FLOW()
 			}
 			# other protocols go here
 			if ($i == "mqtt.topic") {
-					mqtt_topic=i
+				mqtt_topic=i
+			} else if ($i == "mqtt.msgtype") {
+				mqtt_msgtype=i
+			} else if ($i == "mqtt.clientid") {
+				mqtt_clientid=i
+			} else if ($i == "mqtt.disconnect.reason_code") {
+				mqtt_disconnect_reason_code=i
 			}
 		}
 	}
@@ -175,6 +184,15 @@ function NEFIAS_INIT_PER_FLOW()
 			}
 			if (mqtt_topic != "") {
 				printf "-vmqtt_topic="mqtt_topic" "
+			}
+			if (mqtt_msgtype != "") {
+				printf "-vmqtt_msgtype="mqtt_msgtype" "
+			}
+			if (mqtt_clientid != "") {
+				printf "-vmqtt_clientid="mqtt_clientid" "
+			}
+			if (mqtt_disconnect_reason_code != "") {
+				printf "-vmqtt_disconnect_reason_code="mqtt_disconnect_reason_code" "
 			}
 			printf("\n");
 		}
