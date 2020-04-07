@@ -10,6 +10,7 @@ This directory contains the following scripts:
 | `kappa_IAT_- multiple_winsize.sh` | Same as `kappa_IAT.sh`, but with multiple window sizes | Steffen Wendzel | same as `kappa_IAT.sh` |
 | `kappa_MQTT_topics_- multiple_winsize.sh` | Calculates compressibility score (K) using the appearance of MQTT topics with different window sizes. Output format: `<flow (CSV)>, window-size, kappa, number-of-topic-changes-within-winsize` | Steffen Wendzel | code was used for (Mileva et al., 2020) |
 | `kappa_TCP_- seqmod_message_- ordering_pattern.sh` | Calculates compressibility score (K) using different window sizes to detect the [Message Ordering](http://ih-patterns.blogspot.com/p/p10-pdu-order-pattern.html) pattern in TCP, i.e. those covert channels that modulate the order of TCP segments | Steffen Wendzel | Implements exactly the coding and compression as used by (Wendzel, 2019). Also, see [*] |
+| `MQTT_Artifi- cialRecon_multi- ple_winsize.sh` | Calculates compressibility score (K) using the appearance of MQTT client_ids with different window sizes. Output format: `<flow (CSV)>, window-size, kappa, number-of-client_id-changes-within-winsize` | Steffen Wendzel | code was used for (Mileva et al., 2020) |
 
 The following scripts are NeFiAS-internal scripts and are not usable directly:
 
