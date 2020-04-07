@@ -11,6 +11,8 @@ NeFiAS is a simple and portable tool for network anomaly detection/network foren
 
 ## Read the [Documentation](https://github.com/cdpxe/nefias/blob/master/documentation/README.md)
 
+## Check the available NeFiAS [Detection Scripts](https://github.com/cdpxe/nefias/blob/master/scripts/README.md)
+
 # Requirements
 
 NeFiAS requires only standard Linux tools:
