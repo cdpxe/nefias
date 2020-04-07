@@ -20,6 +20,8 @@ NeFiAS requires two types of nodes: a master node and at least one slave node. T
 
 The **master node** is responsible of executing such a NeFiAS job. Therefore, the master node reads the input traffic (CSV format, can also be PCAP/PCAPNG, see below), extracts the relevant traffic meta-data (e.g. source IP address, destination IP address, packet length or other attributes), and splits the data into chunks (of configurable size). The master node then uploads the chunks to the **slave nodes**; the master node also uploads computation scripts and the NeFiAS library script(s) to the slave nodes. The master node monitors the progress of the slave nodes and fetches computation results, once they are completed. Once a node becomes idle, it receives new chunks. When all chunks are completed, the master node ends the job.
 
+Check the available NeFiAS [Detector Scripts](https://github.com/cdpxe/nefias/blob/master/scripts/README.md).
+
 ## Communication Architecture
 
 NeFiAS is entirely based on `ssh` and `scp`, it also takes advantage of the OpenSSH-internal encryption and compression functionality. Using OpenSSH has the following reason: a) OpenSSH is reliable and secure, b) OpenSSH is widely known and often already installed by default (if not, a package/port is available), c) implementing an own communication architecture could not be much better than OpenSSH. There might be faster solutions feasible, but NeFiAS' design concept foresees that performance is *only* achieved through parallelization, not through efficient implementation.
@@ -180,7 +182,7 @@ slaves=(
 
 # Writing own NeFiAS scripts
 
-The real value of NeFiAS lies in the fact that you can run your own calculations within your own jobs. To this end, you need to implement own or modify existing NeFiAS scripts, which you can find in the *scripts/* subdirectory of NeFiAS on your master node.
+The real value of NeFiAS lies in the fact that you can run your own calculations within your own jobs. To this end, you need to implement own or modify **[existing NeFiAS scripts](https://github.com/cdpxe/nefias/blob/master/scripts/README.md)**, which you can find in the *scripts/* subdirectory of NeFiAS on your master node.
 
 ## Standard format for NeFiAS scripts
 
