@@ -39,7 +39,6 @@ for windowsize in $WINDOWSIZES; do
 			#mqtt.msgtype	mqtt.clientid
 			#print "msg_type="$mqtt_msgtype", clientid="$mqtt_clientid
 			
-			
 			if ($mqtt_msgtype == "1" && counter < winsize) {
 				i=0
 				found=0
