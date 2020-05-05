@@ -33,7 +33,7 @@ WINDOWSIZES="100 500 750 1000 1500 1750 2000 2500 3000"
 for windowsize in $WINDOWSIZES; do
 	for flow in $FLOWS; do
 		# always get the first $windowsize packets of that flow and calculate the kappa value based on frame.time_relative.
-		cat ${TMPPKTSFILE} | grep $flow | awk -F\, ${FLOWFIELDS} -vwinsize=${windowsize} \
+		cat ${TMPPKTSFILE} | grep $flow | gawk -F\, ${FLOWFIELDS} -vwinsize=${windowsize} \
 		'BEGIN{ last_topic=99999; previous=0; output=""; topic_changes=0; counter=0 }
 		{
 			if ($mqtt_topic != "" && counter < winsize) {
