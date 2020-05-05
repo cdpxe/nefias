@@ -301,6 +301,10 @@ NeFiAS was used for a few scientific experiments. Papers who used NeFiAS are cit
 - Essentially the same functionality like provided by the script `scripts/kappa_IAT.sh` (but different coding, thus different Kappa values) was used in (Keidel et al., 2018) to calculate the compressibility score for network covert channels that modulate inter-arrival times between succeeding network packets (such covert channels implement the so-called [Inter-packet Times](http://ih-patterns.blogspot.com/p/blog-page_40.html) hiding pattern.
 - Two scripts were used for the work on (Mileva et al., 2020) (see `scripts/README.md` directory), including a detection of the **Artificial Re-connections** pattern.
 
+# Troubleshooting
+
+- Running some of the scripts, I get the error message `awk: line x: illegal reference to array ...`.
+	- Solution: You probably run another version of AWK as originally used by the developer. Install `gawk` instead.
 
 # Contributors
 
