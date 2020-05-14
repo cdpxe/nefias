@@ -28,7 +28,7 @@
 source "`dirname $0`/nefias_lib.sh"
 NEFIAS_INIT_PER_FLOW $1 $2 "ip"
 
-WINDOWSIZES="100 500 750 1000 1500 1750 2000 2500 3000"
+WINDOWSIZES="1500 1750"
 
 for windowsize in $WINDOWSIZES; do
 	for flow in $FLOWS; do
