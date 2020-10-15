@@ -22,7 +22,7 @@ source "`dirname $0`/nefias_lib.sh"
 NEFIAS_INIT_PER_FLOW $1 $2 "tcp"
 
 for flow in $FLOWS; do
-	# always get the first 20010 packets of that flow and calculate epsilon similarity scores based on tcp.seq.
+	# always get the first 2000 packets of that flow and calculate epsilon similarity scores based on tcp.seq.
 	cat ${TMPPKTSFILE} | grep $flow | head -n 2000 | \
 	# use gawk for built-in functions asort() und length().
 	gawk -F\, ${FLOWFIELDS} \
@@ -61,7 +61,7 @@ for flow in $FLOWS; do
 				}
 			}
 			
-			# There must be at least 3 retransmissions to calculate the epsilon similarity scores. Otherwise, an error because of division by 0 occurs.
+			# There must be at least 3 retransmissions to calculate the epsilon similarity scores. Otherwise, an error because of division by 0 would occur.
 			if (counter_Retrans <= 2) {
 				eSim_Werte = "no or not enough (<=2) retransmissions existent"
 			}
