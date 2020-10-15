@@ -2,11 +2,20 @@
 
 NeFiAS is a simple and portable tool for network anomaly detection/network forensics, mostly tailored for the domain of network covert channels (network steganography). It was (initially) written by [Steffen Wendzel](http://www.wendzel.de).
 
+# Design Goals
+
+- Portability
+- Code-base as tiny as possible
+- Low barrier to work with the tool; enable students to easily extend the tool when they write a thesis
+- Support good performance but sacrifice performance if the system can be made more accessible for students and other researchers
+- Enable replication studies
+- Modularity for detection modules; make it possible to write detection modules with as few lines of code as feasible
+
 # Features
 
 - Very tiny framework: core system contains less than 1.000 lines of code
 - Super portable (core system entirely written in `bash` and `awk` (see the *story* below)
-- Provides a good performance due to beowulf cluster, i.e. can be easily spread among many nodes
+- Provides rather a good performance (if used as a beowulf cluster), i.e. can be easily spread among many nodes
 - Requires only standard Linux, no special libraries or tools required (see *requirements* below)
 
 ## Read the [Documentation](https://github.com/cdpxe/nefias/blob/master/documentation/README.md)
@@ -24,4 +33,3 @@ NeFiAS requires only standard Linux tools:
 - `gawk`, `sed`, `tr`, `split` etc.
 - `gzip`
 - `tshark` (optional, but pretty useful)
-
