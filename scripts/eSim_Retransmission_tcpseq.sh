@@ -18,7 +18,6 @@
 # This script receives the following parameters: ./script [chunk] [jobname]
 # note: I recommend to use ~nefias/nefias as tmpfs to speed up the 'cat' command and to limit disk I/O!
 
-
 source "`dirname $0`/nefias_lib.sh"
 NEFIAS_INIT_PER_FLOW $1 $2 "tcp"
 
