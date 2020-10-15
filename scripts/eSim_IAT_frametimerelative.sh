@@ -85,7 +85,7 @@ for flow in $FLOWS; do
 			eSim_7 = epsilon_7_counter / length(arr_lambda)
 			
 			# concatenate the epsilon similarity scores to a single string.
-			eSim_Werte = "eSim(" epsilon_1 ")=" sprintf("%.2f", 100*eSim_1) "%, "\
+			eSim_scores = "eSim(" epsilon_1 ")=" sprintf("%.2f", 100*eSim_1) "%, "\
 				"eSim(" epsilon_2 ")=" sprintf("%.2f", 100*eSim_2) "%, "\
 				"eSim(" epsilon_3 ")=" sprintf("%.2f", 100*eSim_3) "%, "\
 				"eSim(" epsilon_4 ")=" sprintf("%.2f", 100*eSim_4) "%, "\
@@ -94,7 +94,7 @@ for flow in $FLOWS; do
 				"eSim(>=" epsilon_7 ")=" sprintf("%.2f", 100*eSim_7) "%"		
 		
 			# print out the string of the epsilon similarity scores.
-			print eSim_Werte
+			print eSim_scores
 		}
 		
 	# print out the string to the temporary working file.
