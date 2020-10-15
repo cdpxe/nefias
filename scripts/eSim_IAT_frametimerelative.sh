@@ -48,7 +48,7 @@ for flow in $FLOWS; do
 	}
 	END {
 		# make sure the window is filled with enough pkts (max defined by head -n).
-		# there must be at least 3, otherwise an error would occur because of dividing by 0.
+		# there must be at least 3, otherwise an error would occur because of division by 0.
 		if (counter == 2001 && counter >= 3) {
 
 			# sort the inter-packet times.
@@ -56,7 +56,7 @@ for flow in $FLOWS; do
 			
 			# calculate the pairwise relative differences lambda.
 			for (i = 1; i < length(arr_T); i++) {
-				# error handling for divding by 0: If inter-packet time equals 0, lambda is set to 0.
+				# error handling for division by 0: If inter-packet time equals 0, lambda is set to 0.
 				if (arr_T[i] != 0)
 						arr_lambda[i] = (arr_T[i+1]-arr_T[i])/arr_T[i]
 					else
