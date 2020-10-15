@@ -27,6 +27,8 @@ The following scripts are NeFiAS-internal scripts and are not usable directly:
 * (Wendzel et al., 2019) S. Wendzel, F. Link, D. Eller, W. Mazurczyk: [Detection of Size Modulation Covert Channels Using Countermeasure Variation](http://www.jucs.org/jucs_25_11/detection_of_size_modulation), Journal of Universal Computer Science (J.UCS), Vol. 25(11), pp. 1396-1416, 2019.
 * (Wendzel, 2019) S. Wendzel: [Protocol-independent Detection of 'Messaging Ordering' Network Covert Channels](https://doi.org/10.1145/3339252.3341477), in Proc. ARES 2019 (Third International Workshop on Criminal Use of Information Hiding – CUING 2019), pp. 63:1-63:8, ACM, 2019.
 * (Mileva et al., 2020) A. Mileva, A. Velinov, L. Hartmann, S. Wendzel, W. Mazurczyk: *Comprehensive Analysis of MQTT 5.0 Susceptibility to Network Covert Channels*, under review.
+* (Cabuk et al., 2004) S. Cabuk, C. E. Brodley, C. Shields: *IP covert timing channels: design and detection*, Proc. 11th ACM conference on Computerand Communications Security (CCS’04), 178–187, ACM, 2004.
+* (Cabuk et al., 2009) S. Cabuk, C. E. Brodley, C. Shields: *IP covert channel detection*, ACM Trans. Inf. Syst. Secur. 12(4), 22:1–22:29, ACM, 2009.
 
 
 ### Notes
