@@ -27,6 +27,7 @@ for flow in $FLOWS; do
 	# use gawk for built-in functions asort() und length().
 	gawk -F\, ${FLOWFIELDS} \
 	'BEGIN {counter=0
+		# define epsilon values.
 		epsilon_1=0.005; epsilon_1_counter=0
 		epsilon_2=0.008; epsilon_2_counter=0
 		epsilon_3=0.01; epsilon_3_counter=0
@@ -63,7 +64,7 @@ for flow in $FLOWS; do
 						arr_lambda[i] = 0
 			}
 			
-			# count the number of lambdas which are below the respective epsilon thresholds.
+			# count the number of lambdas which are below the respective epsilon values.
 			for (i = 1; i <= length(arr_lambda); i++) {
 				if (arr_lambda[i] < epsilon_1) epsilon_1_counter++
 				if (arr_lambda[i] < epsilon_2) epsilon_2_counter++
