@@ -1,10 +1,12 @@
-v-0.7.1 : 2020-??-??
+v-0.8.0 : 202?-??-??
 MAJOR:
  - allow parallel computation on a single slave node (tested)
  - add new script to that can detect message ordering CCs in TCP seq. #
    (Wendzel, 2019)
  - add new scripts to detect CCs embedded in MQTT topics and MQTT arti-
    ficial re-connect channels (Mileva et al., 2020)
+ - add several new detection scripts written by Kevin Albrechts using
+   epsilon similarity on different hiding patterns
  - substantially extended the documentation, in particular:
    - add comment on how to run parallel computations on a slave node
    - add comment on addressing errors related to limited stack size
