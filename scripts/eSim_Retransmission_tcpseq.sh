@@ -31,7 +31,7 @@ for flow in $FLOWS; do
 		epsilon_1=0.01; epsilon_1_counter=0
 		epsilon_2=0.2; epsilon_2_counter=0
 		epsilon_3=2.5; epsilon_3_counter=0
-		# epsilon_4 means lambda_i >= 2.5. (This epsilon value was not part of Zillien und Wendzel 2018)
+		# epsilon_4 means lambda_i >= 2.5. (This epsilon value was not part of Zillien and Wendzel 2018)
 		epsilon_4=2.5; epsilon_4_counter=0
 	}
 	{
