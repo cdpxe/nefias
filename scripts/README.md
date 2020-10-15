@@ -22,6 +22,7 @@ The following scripts are NeFiAS-internal scripts and are not usable directly:
 
 # References
 
+* (Zillien und Wendzel, 2018) S. Zillien, S. Wendzel: [Detection of covert channels in TCP retransmissions](https://link.springer.com/chapter/10.1007%2F978-3-030-03638-6_13), in Proc. 23rd Nordic Conference on Secure IT Systems (NordSec), LNCS Vol. 11252, pp. 203-218, Springer, 2018.
 * (Keidel et al., 2018) R. Keidel, S. Wendzel, S. Zillien et al.: [WoDiCoF - A Testbed for the Evaluation of (Parallel) Covert Channel Detection Algorithms](http://dx.doi.org/10.3217/jucs-024-05-0556), Journal of Universal Computer Science (J.UCS), Vol. 24(5), 2018.
 * (Wendzel et al., 2019) S. Wendzel, F. Link, D. Eller, W. Mazurczyk: [Detection of Size Modulation Covert Channels Using Countermeasure Variation](http://www.jucs.org/jucs_25_11/detection_of_size_modulation), Journal of Universal Computer Science (J.UCS), Vol. 25(11), pp. 1396-1416, 2019.
 * (Wendzel, 2019) S. Wendzel: [Protocol-independent Detection of 'Messaging Ordering' Network Covert Channels](https://doi.org/10.1145/3339252.3341477), in Proc. ARES 2019 (Third International Workshop on Criminal Use of Information Hiding – CUING 2019), pp. 63:1-63:8, ACM, 2019.
