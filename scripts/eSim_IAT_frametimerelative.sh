@@ -111,7 +111,7 @@ for flow in $FLOWS; do
 		echo "${flow}, ${eSim}" >> ${TMPRESULTSFILE} # Temporary storage for results until all entries were calculated
 	fi
 
-	# delete the temporary workinf file.
+	# delete the temporary working file.
 	rm -f ${TMPWORKFILE}
 	
 done
