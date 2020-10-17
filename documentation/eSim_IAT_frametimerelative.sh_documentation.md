@@ -21,20 +21,20 @@ Implementation of epsilon similarity for inter-packet times pattern described by
 
 ##### Output
 
-* A file that contains one line per flow, where the flow is part of the input chunk and has at least the amount of packets defined by `head -n`. Here, a flow is referred to as one direction of an IP-conncection. A flow, therefore, is characterized by a sender and a receiver IP address, port numbers are not taken into account.
+* A file that contains one line per flow, where the flow is part of the input chunk and has at least the amount of packets defined by `head -n`. Here, a flow is referred to as one direction of an IP-conncection. A flow, therefore, is characterized by a sender and a receiver IP address, port numbers are not taken into account. (To distinguish flows additionally by port numbers, choose `tcp+udp` or anything like this. See [`nefias_lib.sh`](https://github.com/cdpxe/nefias/blob/master/scripts/nefias_lib.sh) and the general [documentation](https://github.com/cdpxe/nefias/blob/master/documentation/README.md) for more information on this.)
 * A line consists of the information of the flow, such as source and destination IP addresses, followed by the calculated epsilon similarity scores (in %).
 * The epsilon similarity scores of the following epsilon values are calculated: 0.005, 0.008, 0.01, 0.02, 0.03, 0.1 and >= 0.1 .
 
 ##### Computation Steps
 
-The script starts with including the functionality of the NeFiAS library script `nefias_lib.sh`.
+The script starts with including the functionality of the NeFiAS library script [`nefias_lib.sh`](https://github.com/cdpxe/nefias/blob/master/scripts/nefias_lib.sh).
 
 Afterwards, the flows are initialized by calling `NEFIAS_INIT_PER_FLOW`. The third parameter within this statement is `"ip"`. This is chosen because only inter-packet times (gaps) between network packets are relevant to the [Inter-packet Times](http://ih-patterns.blogspot.com/p/blog-page_40.html) hiding pattern regardless of whether it contains a tcp segment or udp datagram.
 
 The script mainly consists of a for loop over all flows of the input chunk. Within this loop, the following computation steps are carried out:
 
 1. "Grab" (`grep`) the first 2.001 packets of a flow.
-2. ...
+2. ... (to be continued)
 
 
 
