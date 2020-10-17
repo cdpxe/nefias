@@ -39,7 +39,7 @@ The script mainly consists of a for loop over all flows of the input chunk. With
    - Action statements: Starting from the second packet, the inter-packet times are calculated based on `frame_time_relative` (corresponds to `frame.time_relative`).
    - END:
      - We make sure the window is filled with enough packets (defined by head -n, i.e., 2.001 packets here). There must be at least 3 packets, otherwise an error would occur because of division by 0. If one of these conditions is false, END does not do anything further, i.e. go to step 3.
-       - Sort the inter-packet times.
+     -Sort the inter-packet times.
      - Calculate the pairwise relative differences lambda. Please note: If an inter-packet time equals 0, the corresponding lambda value is also set to 0. This serves to avoid a division by 0, since inter-packet time is in the denominator of the quotient when calculating lambdas.
      - Count the number of lambdas which are below the respective epsilon values.
      - Calculate the epsilon similarity scores.
