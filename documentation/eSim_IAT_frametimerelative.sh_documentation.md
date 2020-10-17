@@ -139,7 +139,7 @@ $ cat results/*
 10.0.0.91,10.0.4.255,,,, eSim(0.005)=72.94%, eSim(0.008)=86.84%, eSim(0.01)=90.90%, eSim(0.02)=97.20%, eSim(0.03)=98.55%, eSim(0.1)=99.35%, eSim(>=0.1)=0.65%
 ```
 
-The results can be found here. The following table shows the averages and standard deviations of the epsilon similarity scores for several epsilon values:
+The results can be found [here].(https://github.com/cdpxe/nefias/tree/master/documentation/results/epsilon-similarity_inter-packet_times). The following table shows the averages and standard deviations of the epsilon similarity scores for several epsilon values:
 
 (to be continued)
 
