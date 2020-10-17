@@ -201,17 +201,10 @@ function NEFIAS_INIT_PER_FLOW()
 	# do not include line 1 (thus "+2") as this is the $HEADER
 	tail -n +2 ${DIRNAME}/../tmp/${FILENAME} | sed 's/\"//g' > ${TMPPKTSFILE}
 	
-	#FIXME: test IPv6 support
 	#FIXME: test UDP support
 	export FLOWS=`cat ${TMPPKTSFILE} | awk -F\, ${FLOWFIELDS} -vudp=${UDP} -vtcp=${TCP} '{
 	# 1) internet layer, we either have IPv4 or IPv6
-		if (ip_src != "" && ip_dst != "") {
-			#ipv4
-			printf $ip_src","$ip_dst",,,"; # three (not two!) commas to incl. empty IPv6 values
-		} else {
-			#ipv6 (two prefix commas for IPv4 values)
-			print ",,"$ip6_src","$ip6_dst;
-		}
+		printf $ip_src","$ip_dst","$ip6_src","$ip6_dst",";
 	# 2) transport layer; we support only UDP+TCP, otherwise print nothing
 		if (udp == "1" || tcp == "1") {
 			if (tcp_srcport != "" && tcp_srcport != "") {

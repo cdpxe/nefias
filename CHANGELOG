@@ -23,6 +23,7 @@ MINOR:
 SECURITY FIXES:
  - none
 FIXES:
+ - fix handling of IPv6 flows
  - make sure ./results, $SLAVE_SCRIPT, $SLAVE_HOSTCONFIG, $TRAFFIC_SOURCE files
    exist (and that ./results is a directory)
  - fix pre-calculation of required chunks in string output
