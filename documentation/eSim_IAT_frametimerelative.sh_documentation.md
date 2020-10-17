@@ -120,11 +120,29 @@ The following plots visualize the unsorted inter-packet times, the sorted inter-
 
 (to be continued)
 
-* (example output/results file with several lines: IP addresses and eSim scores)
 * (table with eSim scores)
 * (decision heuristic)
 * (detection results)
 * (precision, accuracy, recall)
+
+If the script is run with the legitimate traffic described above, it produces results in the following form, whereas this is only an extract of all results:
+
+```
+$ cat results/*
+10.1.34.147,10.5.71.151,,,, eSim(0.005)=82.39%, eSim(0.008)=88.44%, eSim(0.01)=90.95%, eSim(0.02)=95.15%, eSim(0.03)=96.90%, eSim(0.1)=98.90%, eSim(>=0.1)=1.10%
+10.0.0.250,10.0.38.197,,,, eSim(0.005)=73.99%, eSim(0.008)=83.34%, eSim(0.01)=87.84%, eSim(0.02)=95.10%, eSim(0.03)=96.55%, eSim(0.1)=99.05%, eSim(>=0.1)=0.95%
+10.0.1.164,10.0.25.58,,,, eSim(0.005)=97.50%, eSim(0.008)=98.05%, eSim(0.01)=98.30%, eSim(0.02)=98.95%, eSim(0.03)=99.05%, eSim(0.1)=99.45%, eSim(>=0.1)=0.55%
+10.0.111.89,10.4.75.21,,,, eSim(0.005)=92.55%, eSim(0.008)=93.90%, eSim(0.01)=94.40%, eSim(0.02)=96.50%, eSim(0.03)=97.55%, eSim(0.1)=99.40%, eSim(>=0.1)=0.60%
+10.0.32.144,10.3.222.170,,,, eSim(0.005)=77.64%, eSim(0.008)=86.59%, eSim(0.01)=89.89%, eSim(0.02)=95.85%, eSim(0.03)=97.30%, eSim(0.1)=99.25%, eSim(>=0.1)=0.75%
+10.0.0.91,10.0.4.255,,,, eSim(0.005)=75.99%, eSim(0.008)=86.59%, eSim(0.01)=91.10%, eSim(0.02)=97.60%, eSim(0.03)=98.75%, eSim(0.1)=99.50%, eSim(>=0.1)=0.50%
+10.0.0.91,10.0.4.255,,,, eSim(0.005)=74.59%, eSim(0.008)=87.99%, eSim(0.01)=91.65%, eSim(0.02)=97.70%, eSim(0.03)=98.85%, eSim(0.1)=99.40%, eSim(>=0.1)=0.60%
+10.0.0.91,10.0.4.255,,,, eSim(0.005)=72.94%, eSim(0.008)=86.84%, eSim(0.01)=90.90%, eSim(0.02)=97.20%, eSim(0.03)=98.55%, eSim(0.1)=99.35%, eSim(>=0.1)=0.65%
+```
+
+The results can be found here. The following table shows the averages and standard deviations of the epsilon similarity scores for several epsilon values:
+
+(to be continued)
+
 
 
 ### Customize Script for Own Research
