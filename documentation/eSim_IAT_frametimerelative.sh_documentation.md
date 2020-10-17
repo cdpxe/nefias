@@ -98,8 +98,20 @@ In addition to the data sets for testing, a legitimate flow from reading newspap
 
 ###### Covert Channel
 
-... (to be continued)
+The following plots visualize the unsorted inter-packet times, the sorted inter-packet times and the lambdas of the first 2,001 packets of the flow from `143.93.247.87` to `91.121.132.198` of the recordings contained in the file "remotehost_TCC_faust_GZ_80_160.pcap.csv" (can be found [here](https://github.com/cdpxe/nefias/blob/master/recordings/TCC_SCC_internet_remotehost/remotehost_TCC_faust_GZ_80_160.pcap.csv)) of a covert channel with Inter-packet Times hiding pattern. The channel uses inter-packet times of 80 and 160 ms.
 
+
+<p align="center">
+  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/images/epsilon-similarity_inter-packet_times/Veusz_IAT_NWZ_Zeitung_unsorted_inter-packet_times.png" width="600" title="Unsorted Inter-packet Times">
+</p>
+
+<p align="center">
+  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/images/epsilon-similarity_inter-packet_times/Veusz_IAT_NWZ_Zeitung_sorted_inter-packet_times.png" width="600" title="Sorted Inter-packet Times">
+</p>
+
+<p align="center">
+  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/images/epsilon-similarity_inter-packet_times/Veusz_IAT_NWZ_Zeitung_lambdas.png" width="600" title="Lambdas">
+</p>
 
 
 
