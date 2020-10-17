@@ -1,4 +1,4 @@
-The file contains two flows of reading newspaper online from [NWZ Online (Nordwest-Zeitung)](https://www.nwzonline.de/): The flow from local host to newspaper' server and the opposite direction.
+The file contains two flows of reading newspaper online from [NWZ Online (Nordwest-Zeitung)](https://www.nwzonline.de/): The flow from local host to the newspaper's server and the flow in the opposite direction.
 
 * Start time: Wed. Sept. 9th 2020, 22:33
 * End time: Wed. Sept. 9th 2020, 22:55
