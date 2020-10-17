@@ -14,7 +14,7 @@
 # You should have received a copy of the GNU General Public License
 # along with Foobar.  If not, see <https://www.gnu.org/licenses/>.
 
-NEFIAS_VERSION="0.7.1-alpha"
+NEFIAS_VERSION="0.8.0-alpha"
 NEFIAS_LICENSE="GPLv3"
 EXECUTABLE=$0
 DEBUG="0"
