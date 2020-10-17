@@ -35,16 +35,16 @@ The script mainly consists of a for loop over all flows of the input chunk. With
 
 1. "Grab" (`grep`) the first 2.001 packets of a flow. (Each packet correponds to a line in the input chunk file.)
 2. Process these packets with `gawk` (whereas the program-file is specified directly):
-   - BEGIN: Epsilon values are declared and initialized.
-2.2. Action statements: Starting from the second packet, the inter-packet times are calculated based on `frame_time_relative` (corresponds to `frame.time_relative`).
-2.3. END:
-2.3.1. We make sure the window is filled with enough packets (defined by head -n, i.e., 2.001 packets here). There must be at least 3 packets, otherwise an error would occur because of division by 0. If one of these conditions is false, END does not do anything further, i.e. goes to step 3.
-2.3.2. Sort the inter-packet times.
-2.3.3. Calculate the pairwise relative differences lambda. Please note: If an inter-packet time equals 0, the corresponding lambda value is also set to 0. This serves to avoid a division by 0, since inter-packet time is in the denominator of the quotient when calculating lambdas.
-2.3.4. Count the number of lambdas which are below the respective epsilon values.
-2.3.5. Calculate the epsilon similarity scores.
-2.3.6. Concatenate the epsilon similarity scores to a single string. (in %, rounded to two decimal places)
-2.3.7. Print out the string of the epsilon similarity scores.
+   2.1 BEGIN: Epsilon values are declared and initialized.
+  2.2. Action statements: Starting from the second packet, the inter-packet times are calculated based on `frame_time_relative` (corresponds to `frame.time_relative`).
+  2.3. END:
+       2.3.1. We make sure the window is filled with enough packets (defined by head -n, i.e., 2.001 packets here). There must be at least 3 packets, otherwise an error would occur because of division by 0. If one of these conditions is false, END does not do anything further, i.e. go to step 3.
+       2.3.2. Sort the inter-packet times.
+       2.3.3. Calculate the pairwise relative differences lambda. Please note: If an inter-packet time equals 0, the corresponding lambda value is also set to 0. This serves to avoid a division by 0, since inter-packet time is in the denominator of the quotient when calculating lambdas.
+       2.3.4. Count the number of lambdas which are below the respective epsilon values.
+       2.3.5. Calculate the epsilon similarity scores.
+       2.3.6. Concatenate the epsilon similarity scores to a single string. (in %, rounded to two decimal places)
+       2.3.7. Print out the string of the epsilon similarity scores.
 3. Redirect the output of step 2 (either a line of epsilon similarity scores or empty): Overwrite the temporary working file `${TMPWORKFILE}` with this output.
 4. Paste the output of step 2 (contained in `${TMPWORKFILE}`) into the temporary results file `${TMPRESULTSFILE}`: If `${TMPWORKFILE}` is empty, `${TMPRESULTSFILE}` will be empty as well. Otherwise, the flow information and the epsilon similarity scores are concatenated and written to `${TMPRESULTSFILE}`.
 5. Delete the temporary working file `${TMPWORKFILE}`.
