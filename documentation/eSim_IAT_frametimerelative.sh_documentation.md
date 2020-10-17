@@ -12,7 +12,7 @@ Kevin Albrechts, in cooperation with Steffen Wendzel
 
 Implementation of epsilon similarity for inter-packet times pattern described by (Cabuk et al., 2004 and 2009).
 
-### Funcitonality
+### Functionality
 
 ##### Input
 
