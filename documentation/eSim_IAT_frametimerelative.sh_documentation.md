@@ -16,7 +16,7 @@ Implementation of epsilon similarity for inter-packet times pattern described by
 
 ##### Input
 
-* Chunk of the traffic recording to be analysed and
+* Chunk of the traffic recording (`--traffic-source=`) to be analysed and
 * Jobname
 
 ##### Output
