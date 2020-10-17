@@ -1,5 +1,16 @@
 # Documentation of Script [`eSim_IAT_frametimerelative.sh`](https://github.com/cdpxe/nefias/blob/master/scripts/eSim_IAT_frametimerelative.sh)
 
+Contents:
+
+* Short description
+* Author
+* Comment/reference
+* Functionality
+* Testing and evaluation of the script
+* Customize script for own research
+* Further notes
+
+
 ### Short Description
 
 Calculates epsilon similarity scores using a static window size (2,001) on the basis of inter-packet gaps (per flow); this script helps to detect network covert channels that modulate the timings between succeeding network packets (such covert channels implement the so-called [Inter-packet Times](http://ih-patterns.blogspot.com/p/blog-page_40.html) hiding pattern)
@@ -80,7 +91,7 @@ Lastly, the script calls `NEFIAS_FINISH` to finalize the processing of the chunk
 * (precision, accuracy, recall)
 
 
-### Customize script for own research
+### Customize Script for Own Research
 
 ##### Window size
 
