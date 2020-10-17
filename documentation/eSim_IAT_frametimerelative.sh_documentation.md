@@ -91,7 +91,7 @@ In addition to the data sets for testing, a legitimate flow from reading newspap
 </p>
 
 <p align="center">
-  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/images/epsilon-similarity_inter-packet_times/Veusz_IAT_NWZ_Zeitung_unsorted_lambdas.png" width="600" title="Lambdas">
+  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/images/epsilon-similarity_inter-packet_times/Veusz_IAT_NWZ_Zeitung_lambdas.png" width="600" title="Lambdas">
 </p>
 
 
