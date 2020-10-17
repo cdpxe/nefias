@@ -102,20 +102,16 @@ The following plots visualize the unsorted inter-packet times, the sorted inter-
 
 
 <p align="center">
-  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/images/epsilon-similarity_inter-packet_times/Veusz_IAT_NWZ_Zeitung_unsorted_inter-packet_times.png" width="600" title="Unsorted Inter-packet Times">
+  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/images/epsilon-similarity_inter-packet_times/Veusz_IAT_covert1_unsorted_inter-packet_times.png" width="600" title="Unsorted Inter-packet Times">
 </p>
 
 <p align="center">
-  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/images/epsilon-similarity_inter-packet_times/Veusz_IAT_NWZ_Zeitung_sorted_inter-packet_times.png" width="600" title="Sorted Inter-packet Times">
+  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/images/epsilon-similarity_inter-packet_times/Veusz_IAT_covert1_sorted_inter-packet_times.png" width="600" title="Sorted Inter-packet Times">
 </p>
 
 <p align="center">
-  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/images/epsilon-similarity_inter-packet_times/Veusz_IAT_NWZ_Zeitung_lambdas.png" width="600" title="Lambdas">
+  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/images/epsilon-similarity_inter-packet_times/Veusz_IAT_covert1_lambdas.png" width="600" title="Lambdas">
 </p>
-
-
-
-
 
 
 
