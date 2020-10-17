@@ -69,10 +69,22 @@ Lastly, the script calls `NEFIAS_FINISH` to finalize the processing of the chunk
 
 ##### Traffic Recordings
 
-* Covert Channels: The traffic recordings used for testing were provided by Steffen Wendzel and can be found here: [1](https://github.com/cdpxe/nefias/tree/master/recordings/TCC_SCC_ethernet), [2](https://github.com/cdpxe/nefias/tree/master/recordings/TCC_SCC_internet_remotehost), [3](https://github.com/cdpxe/nefias/tree/master/recordings/TCC_localhost).
 * Legitimate Traffic: Part of NZIX-II data of [WAND Network Research Group](https://wand.net.nz/wits/nzix/2/). The [file](https://wand.net.nz/wits/nzix/2/20000705-152900.php) containing traffic from Wed Jul 5 15:29:00 2000 to Wed Jul 5 17:59:59 2000 was split into 6 almost equally sized files by libtrace for better processing. From the first 4 files, those IP (one-directional) connections were extracted which contain at least 2,001 packets, and from the last 2 files, those with at least 5,000 packets were extracted. Each extracted connection was saved to one file each. To sum up, 542 files were used for testing.
+* Covert Channels: The traffic recordings used for testing were provided by Steffen Wendzel and can be found here: [1](https://github.com/cdpxe/nefias/tree/master/recordings/TCC_SCC_ethernet), [2](https://github.com/cdpxe/nefias/tree/master/recordings/TCC_SCC_internet_remotehost), [3](https://github.com/cdpxe/nefias/tree/master/recordings/TCC_localhost).
 
 ##### Plots
+
+####### Legitimate Traffic
+
+In addition to the data sets for testing, a legitimate flow from reading newspaper online was recorded (not part of testing) using `tshark`. The newspaper [NWZ Online](https://www.nwzonline.de/) was opened on Sept. 9th 2020 at 22:33. Several articles and local sites were openend and read to simulate legitimate traffic and "normal" behavior on the internet. Recording stopped at 22:55 after 5,000 packets (of both flows/directions). The file can be found [here](https://github.com/cdpxe/nefias/tree/master/recordings/Legitimate_flow_of_reading_newspaper). For the first 2,001 packets of the flow from the newspaper's server to the local (and recordring) host, the following plots show the unsorted inter-packet times, the sorted inter-packet times and the lambdas.
+
+![GitHub Logo](/images/logo.png)
+Format: ![Alt Text](url)
+
+
+####### Covert Channel
+
+... (to be continued)
 
 
 
