@@ -69,16 +69,18 @@ Lastly, the script calls `NEFIAS_FINISH` to finalize the processing of the chunk
 
 ##### Traffic Recordings
 
-(to be continued)
-
-* Covert Channel: ...
-* Legitimate Traffic: ...
+* Covert Channels: The traffic recordings used for testing were provided by Steffen Wendzel and can be found here: [1](https://github.com/cdpxe/nefias/tree/master/recordings/TCC_SCC_ethernet), [2](https://github.com/cdpxe/nefias/tree/master/recordings/TCC_SCC_internet_remotehost), [3](https://github.com/cdpxe/nefias/tree/master/recordings/TCC_localhost).
+* Legitimate Traffic: Part of NZIX-II data of [WAND Network Research Group](https://wand.net.nz/wits/nzix/2/). The [file](https://wand.net.nz/wits/nzix/2/20000705-152900.php) containing traffic from Wed Jul 5 15:29:00 2000 to Wed Jul 5 17:59:59 2000 was split into 6 almost equally sized files by libtrace for better processing. From the first 4 files, those IP (one-directional) connections were extracted which contain at least 2,001 packets, and from the last 2 files, those with at least 5,000 packets were extracted. Each extracted connection was saved to one file each. To sum up, 542 files were used for testing.
 
 ##### Plots
 
-(to be continued)
 
-* (visualizations for covert and legitimate)
+
+
+
+
+
+
 
 ##### Results
 
