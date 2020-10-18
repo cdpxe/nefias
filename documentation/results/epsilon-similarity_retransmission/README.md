@@ -1,0 +1,1 @@
+This folder contains the results files from the test of the script [`eSim_Retransmission_tcpseq.sh`](https://github.com/cdpxe/nefias/blob/master/scripts/eSim_Retransmission_tcpseq.sh) that were used in the [documentation](https://github.com/cdpxe/nefias/blob/master/documentation/eSim_Retransmission_tcpseq.sh_documentation.md).
