@@ -135,22 +135,19 @@ $ cat results/*
 
 
 
+The results can be found [here](https://github.com/cdpxe/nefias/tree/master/documentation/results/epsilon-similarity_retransmission). The following table shows the arithmetic averages and standard deviations of the epsilon similarity scores for several epsilon values:
+
+<p align="center">
+  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/results/epsilon-similarity_retransmission/test_results_eSim_Retransmission.png" width="1000" title="Test results for eSim of Retransmission pattern">
+</p>
+
+
 
 (TO BE CONTINUED)
 
 
 
 
-
-
-
-
-
-The results can be found [here](...). The following table shows the arithmetic averages and standard deviations of the epsilon similarity scores for several epsilon values:
-
-<p align="center">
-  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/results/epsilon-similarity_inter-packet_times/test_results_eSim_IAT.png" width="1000" title="Test results for eSim of Inter-packet Times pattern">
-</p>
 
 According to (Cabuk et al., 2004, 2009), the threshold for each epsilon value is computed as the sum of the arithmetic average and 1.5-times the standard deviation. The thresholds are listed in the following table:
 
