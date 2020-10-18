@@ -201,3 +201,6 @@ If you want to change the epsilon values, you need to make modifications to the 
 * The script requires `gawk` due to built-in functions asort() und length().
 
 
+# References
+
+* (Zillien und Wendzel, 2018) S. Zillien, S. Wendzel: [Detection of covert channels in TCP retransmissions](https://link.springer.com/chapter/10.1007%2F978-3-030-03638-6_13), in Proc. 23rd Nordic Conference on Secure IT Systems (NordSec), LNCS Vol. 11252, pp. 203-218, Springer, 2018.
