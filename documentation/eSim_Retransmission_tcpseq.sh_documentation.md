@@ -97,7 +97,7 @@ In addition to the data sets for testing, a legitimate flow from reading newspap
 
 ###### Covert Channel
 
-The following plots visualize the unsorted deltas, the sorted deltas and the lambdas of the first 2,000 packets of the flow from `130.225.254.116` to `143.93.190.252` of the recordings contained in the file "Denmark_17_09_2018_15_24_03.pcap_CLEANED.pcap_covert_0_50_10_20.csv" (can be found [here](...)) of a covert channel with Retransmission hiding pattern. The channel uses parameters O=0, D=50, I=10, J=20.
+The following plots visualize the unsorted deltas, the sorted deltas and the lambdas of the first 2,000 packets of the flow from `130.225.254.116` to `143.93.190.252` of the recordings contained in the file "Denmark_17_09_2018_15_24_03.pcap_CLEANED.pcap_covert_0_50_10_20.csv" (can be found [here](https://github.com/cdpxe/nefias/tree/master/recordings/covert_channel_retransmission_pattern)) of a covert channel with Retransmission hiding pattern. The channel uses parameters O=0, D=50, I=10, J=20.
 
 
 <p align="center">
