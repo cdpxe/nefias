@@ -44,7 +44,7 @@ Afterwards, the flows are initialized by calling `NEFIAS_INIT_PER_FLOW`. The thi
 
 The script mainly consists of a for loop over all flows of the input chunk. Within this loop, the following computation steps are carried out:
 
-1. "Grab" (`grep`) the first 2.001 packets of a flow. (Each packet correponds to a line in the input chunk file.)
+1. "Grab" (`grep`) the first 2,001 packets of a flow. (Each packet correponds to a line in the input chunk file.)
 2. Process these packets with `gawk` (whereas the program-file is specified directly):
    - BEGIN: Epsilon values are declared and initialized.
    - Action statements: Starting from the second packet, the inter-packet times are calculated based on `frame_time_relative` (corresponds to `frame.time_relative`).
