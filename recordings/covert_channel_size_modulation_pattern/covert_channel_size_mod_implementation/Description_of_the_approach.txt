@@ -1,0 +1,16 @@
+The covert channel with Size Modulation hiding pattern contains packets with e.g. 1,000 and 1,001 byte.
+
+Sender: 192.168.0.46
+Receiver: 192.168.0.206
+
+Step 1: In the terminal of the receiver, execute the command to record packets incoming from the sender.
+sudo tshark -i wlp14s0 -a packets 30000 -w Size_Mod_Channel.pcap -f "tcp and src host 192.168.0.46"
+
+Step 2: In a second terminal of the receiver, start listening on a port with ncat:
+ncat -v -l 9999
+
+Step 3: In the terminal of the sender, execute ncat while running the script of the covert channel:
+ncat -v 192.168.0.206 9999 -e Covert_Channel_UTF8_1000_1001_TheQuickBrown_ncat.sh
+
+
+
