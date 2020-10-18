@@ -142,39 +142,22 @@ The results can be found [here](https://github.com/cdpxe/nefias/tree/master/docu
 </p>
 
 
+According to (Zillien and Wendzel, 2018), the decision heuristic is as follows: A flow is classified as covert if at least 2 of the following 3 conditions hold:
 
-(TO BE CONTINUED)
-
-
-
-
-
-According to (Cabuk et al., 2004, 2009), the threshold for each epsilon value is computed as the sum of the arithmetic average and 1.5-times the standard deviation. The thresholds are listed in the following table:
-
-<p align="center">
-  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/results/epsilon-similarity_inter-packet_times/thresholds_eSim_IAT.png" width="600" title="Thresholds for eSim of Inter-packet Times pattern">
-</p>
-
-According to (Cabuk et al., 2004, 2009), the decision heuristic is as follows: A flow is classified as covert if at least 4 of the following 7 conditions hold:
-
-* For epsilon = 0.005: The epsilon similarity score is greater than 98.46%.
-* For epsilon = 0.008: The epsilon similarity score is greater than 98.90%.
-* For epsilon = 0.01: The epsilon similarity score is greater than 99.02%.
-* For epsilon = 0.02: The epsilon similarity score is greater than 99.33%.
-* For epsilon = 0.03: The epsilon similarity score is greater than 99.51%.
-* For epsilon = 0.1: The epsilon similarity score is greater than 99.87%.
-* For epsilon = ">= 0.1": The epsilon similarity score is lower than 0.13%.
+* For epsilon = 0.01: The epsilon similarity score is less than or equal to 99.70%.
+* For epsilon = 0.2: The epsilon similarity score is greater than or equal to 95.00%.
+* For epsilon = 2.5: The epsilon similarity score is (greater than or) equal to 100.00%.
 
 Applying this decision heuristics to the flows from above, the following detection results are obtained:
 
 <p align="center">
-  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/results/epsilon-similarity_inter-packet_times/detection_results_eSim_IAT.png" width="600" title="Detection results for eSim of Inter-packet Times pattern">
+  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/results/epsilon-similarity_retransmission/detection_results_eSim_Retransmission.png" width="600" title="Detection results for eSim of Retransmission pattern">
 </p>
 
 The following plot shows accuracy, precision and recall of the detection results:
 
 <p align="center">
-  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/results/epsilon-similarity_inter-packet_times/Precision_Accuracy_Recall-IAT-detection_results.png" width="600" title="Accuracy, precision and recall of the detection results for eSim of Inter-packet Times pattern">
+  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/results/epsilon-similarity_retransmission/Precision_Accuracy_Recall-Retransmission-detection_results.png" width="600" title="Accuracy, precision and recall of the detection results for eSim of Retransmission pattern">
 </p>
 
 
@@ -186,13 +169,13 @@ The following plot shows accuracy, precision and recall of the detection results
 If you want to change the window size, you need to make modifications to the following parts of the script:
 
 * At the beginning of the for loop: `head -n`
-* At the beginning of the END block within the gawk program-file: The first part of the if condition `if (counter == 2001 && counter >= 3)`
+* At the beginning of the END block within the gawk program-file: The first part of the if condition `if (counter == 2000)`
 
 ##### Epsilon values
 
 If you want to change the epsilon values, you need to make modifications to the following parts of the script (not necessarily all of them):
 
-* In the BEGIN block within the gawk program-file: e.g. `epsilon_1=<your value>` or if you want to add an additional epsilon value, append `epsilon_8=<your value>; epsilon_8_counter=0`
+* In the BEGIN block within the gawk program-file: e.g. `epsilon_1=<your value>` or if you want to add an additional epsilon value, append `epsilon_5=<your value>; epsilon_5_counter=0`
 * In the END block within the gawk program-file where the epsilon similarity scores are explicitly calculated: e.g. `eSim_1 = epsilon_1_counter / length(arr_lambda)`
 * In the END block within the gawk program-file where the epsilon similarity scores are concatenated to a single string
 
