@@ -65,7 +65,6 @@ Lastly, the script calls `NEFIAS_FINISH` to finalize the processing of the chunk
 
 ### Testing and Evaluation of the Script
 
-(to be continued) (German -> English)
 
 ##### Traffic Recordings
 
