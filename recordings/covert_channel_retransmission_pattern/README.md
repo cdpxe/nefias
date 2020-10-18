@@ -3,7 +3,7 @@ This folder contains recordings of covert channels which use the [Retransmission
 | | |
 | ------------- | ------------- |
 | **Parameters** (O_D_I_J)        | 0_10_3_7, 0_50_10_20, 0_100_30_70, 0_500_100_200, 0_1000_300_700, 1000_10_3_7        |
-| **Cover message**        | "TheQuickBrownFoxJumpedOverTheLazyDog" in constant repetition       |
+| **Covert message**        | "TheQuickBrownFoxJumpedOverTheLazyDog" in constant repetition       |
 | **Number of files and contained packets**        | 240 files, each containing between 11,000 and 17,000 packets       |
 | **Location of sender**        | Armenia, Denmark, Germany, USA       |
 
