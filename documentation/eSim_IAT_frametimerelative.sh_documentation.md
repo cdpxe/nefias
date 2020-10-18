@@ -191,7 +191,7 @@ If you want to change the epsilon values, you need to make modifications to the 
 * The script requires `gawk` due to built-in functions asort() und length().
 
 
-# References
+### References
 
 * (Cabuk et al., 2004) S. Cabuk, C. E. Brodley, C. Shields: *IP covert timing channels: design and detection*, Proc. 11th ACM conference on Computerand Communications Security (CCS’04), 178–187, ACM, 2004.
 * (Cabuk et al., 2009) S. Cabuk, C. E. Brodley, C. Shields: *IP covert channel detection*, ACM Trans. Inf. Syst. Secur. 12(4), 22:1–22:29, ACM, 2009.
