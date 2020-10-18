@@ -118,6 +118,22 @@ The following plots visualize the unsorted deltas, the sorted deltas and the lam
 
 
 
+If the script is run with the legitimate traffic described above, it produces results in the following form, whereas this is only an extract of all results:
+
+```
+$ cat results/*
+10.0.8.132,10.0.53.31,,,25,24327,,, eSim(0.01)=100.00%, eSim(0.2)=100.00%, eSim(2.5)=100.00%, eSim(>=2.5)=0.00%
+10.3.78.124,10.5.82.142,,,2384,6699,,, eSim(0.01)=100.00%, eSim(0.2)=100.00%, eSim(2.5)=100.00%, eSim(>=2.5)=0.00%
+10.0.33.168,10.0.219.217,,,25,3956,,, eSim(0.01)=100.00%, eSim(0.2)=100.00%, eSim(2.5)=100.00%, eSim(>=2.5)=0.00%
+10.0.33.168,10.0.219.217,,,25,3956,,, eSim(0.01)=100.00%, eSim(0.2)=100.00%, eSim(2.5)=100.00%, eSim(>=2.5)=0.00%
+10.0.0.27,10.0.5.160,,,7070,1147,,, eSim(0.01)=27.27%, eSim(0.2)=72.73%, eSim(2.5)=95.45%, eSim(>=2.5)=4.55%
+10.0.0.91,10.0.10.235,,,2244,80,,, eSim(0.01)=99.95%, eSim(0.2)=99.95%, eSim(2.5)=99.95%, eSim(>=2.5)=0.05%
+10.0.2.53,10.1.27.100,,,61623,20,,, eSim(0.01)=33.33%, eSim(0.2)=66.67%, eSim(2.5)=100.00%, eSim(>=2.5)=0.00%
+10.0.2.53,10.1.27.100,,,61623,20,,, eSim(0.01)=11.11%, eSim(0.2)=33.33%, eSim(2.5)=77.78%, eSim(>=2.5)=22.22%
+```
+
+
+
 
 (TO BE CONTINUED)
 
@@ -127,21 +143,9 @@ The following plots visualize the unsorted deltas, the sorted deltas and the lam
 
 
 
-If the script is run with the legitimate traffic described above, it produces results in the following form, whereas this is only an extract of all results:
 
-```
-$ cat results/*
-10.1.34.147,10.5.71.151,,,, eSim(0.005)=82.39%, eSim(0.008)=88.44%, eSim(0.01)=90.95%, eSim(0.02)=95.15%, eSim(0.03)=96.90%, eSim(0.1)=98.90%, eSim(>=0.1)=1.10%
-10.0.0.250,10.0.38.197,,,, eSim(0.005)=73.99%, eSim(0.008)=83.34%, eSim(0.01)=87.84%, eSim(0.02)=95.10%, eSim(0.03)=96.55%, eSim(0.1)=99.05%, eSim(>=0.1)=0.95%
-10.0.1.164,10.0.25.58,,,, eSim(0.005)=97.50%, eSim(0.008)=98.05%, eSim(0.01)=98.30%, eSim(0.02)=98.95%, eSim(0.03)=99.05%, eSim(0.1)=99.45%, eSim(>=0.1)=0.55%
-10.0.111.89,10.4.75.21,,,, eSim(0.005)=92.55%, eSim(0.008)=93.90%, eSim(0.01)=94.40%, eSim(0.02)=96.50%, eSim(0.03)=97.55%, eSim(0.1)=99.40%, eSim(>=0.1)=0.60%
-10.0.32.144,10.3.222.170,,,, eSim(0.005)=77.64%, eSim(0.008)=86.59%, eSim(0.01)=89.89%, eSim(0.02)=95.85%, eSim(0.03)=97.30%, eSim(0.1)=99.25%, eSim(>=0.1)=0.75%
-10.0.0.91,10.0.4.255,,,, eSim(0.005)=75.99%, eSim(0.008)=86.59%, eSim(0.01)=91.10%, eSim(0.02)=97.60%, eSim(0.03)=98.75%, eSim(0.1)=99.50%, eSim(>=0.1)=0.50%
-10.0.0.91,10.0.4.255,,,, eSim(0.005)=74.59%, eSim(0.008)=87.99%, eSim(0.01)=91.65%, eSim(0.02)=97.70%, eSim(0.03)=98.85%, eSim(0.1)=99.40%, eSim(>=0.1)=0.60%
-10.0.0.91,10.0.4.255,,,, eSim(0.005)=72.94%, eSim(0.008)=86.84%, eSim(0.01)=90.90%, eSim(0.02)=97.20%, eSim(0.03)=98.55%, eSim(0.1)=99.35%, eSim(>=0.1)=0.65%
-```
 
-The results can be found [here](https://github.com/cdpxe/nefias/tree/master/documentation/results/epsilon-similarity_inter-packet_times). The following table shows the arithmetic averages and standard deviations of the epsilon similarity scores for several epsilon values:
+The results can be found [here](...). The following table shows the arithmetic averages and standard deviations of the epsilon similarity scores for several epsilon values:
 
 <p align="center">
   <img src="https://github.com/cdpxe/nefias/blob/master/documentation/results/epsilon-similarity_inter-packet_times/test_results_eSim_IAT.png" width="1000" title="Test results for eSim of Inter-packet Times pattern">
