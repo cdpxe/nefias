@@ -142,7 +142,7 @@ $ cat results/*
 The results can be found [here](https://github.com/cdpxe/nefias/tree/master/documentation/results/epsilon-similarity_inter-packet_times). The following table shows the arithmetic averages and standard deviations of the epsilon similarity scores for several epsilon values:
 
 <p align="center">
-  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/results/epsilon-similarity_inter-packet_times/test_results_eSim_IAT.png" width="600" title="Test results for eSim of Inter-packet Times pattern">
+  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/results/epsilon-similarity_inter-packet_times/test_results_eSim_IAT.png" width="1000" title="Test results for eSim of Inter-packet Times pattern">
 </p>
 
 
