@@ -1,15 +1,15 @@
-This folder contains recordings of covert channels which use the [Size Modulation](http://ih-patterns.blogspot.com/p/p1-size-modulation-pattern.html) hiding pattern. The original recordings contained downloads from Debian mirror servers located in different countries. The records have been cleaned up to remove the packets that were not part of the actual download flow, so that only packets of the file download are included, i.e. the sender of the flow is the mirror server. The covert channel was then embedded in the recordings. This encodes the message "TheQuickBrownFoxJumpedOverTheLazyDog" in constant repetition. The covert channels use different parameters, i.e. intervals between retransmissions (see (Zillien and Wendzel, 2018)). The parameters used are in the respective file name and follow the form O_D_I_J. A short overview of these recordings is given by the following table:
+This folder contains the implementation and recordings of covert channels which use the [Size Modulation](http://ih-patterns.blogspot.com/p/p1-size-modulation-pattern.html) hiding pattern. The covert channel was recorded using `tshark`. However, due to time pressure, the implementation and recording did not provide "perfect" results. That means, some packets were recorded with a packet size twice as big as well as some retransmissions or segments out of order. Nevertheless, these imperfections were very few compared to the total amount of packets. For more about this, take a look at the recording files. A short overview of the recordings is given by the following table:
 
 | | |
 | ------------- | ------------- |
-| **Parameters** (O_D_I_J)        | 0_10_3_7, 0_50_10_20, 0_100_30_70, 0_500_100_200, 0_1000_300_700, 1000_10_3_7        |
+| **Payload sizes** (0-bit_1-bit in byte)        | 50_60, 100_101, 100_200, 100_1000, 1000_1001        |
 | **Covert message**        | "TheQuickBrownFoxJumpedOverTheLazyDog" in constant repetition       |
-| **Number of files and contained packets**        | 240 files, each containing between 11,000 and 17,000 packets       |
-| **Location of sender**        | Armenia, Denmark, Germany, USA       |
+| **Number of files and contained packets**        | Per pair of payload sizes 10 files with 30,000 packets each. A total of 50 files with 30,000 packets each.       |
+| **Transmission path**        | directly over stable Ethernet       |
 
 
 
 ### References
 
-* (Zillien und Wendzel, 2018) S. Zillien, S. Wendzel: [Detection of covert channels in TCP retransmissions](https://link.springer.com/chapter/10.1007%2F978-3-030-03638-6_13), in Proc. 23rd Nordic Conference on Secure IT Systems (NordSec), LNCS Vol. 11252, pp. 203-218, Springer, 2018.
+* (Wendzel et al., 2019) S. Wendzel, F. Link, D. Eller, W. Mazurczyk: [Detection of Size Modulation Covert Channels Using Countermeasure Variation](http://www.jucs.org/jucs_25_11/detection_of_size_modulation), Journal of Universal Computer Science (J.UCS), Vol. 25(11), pp. 1396-1416, 2019.
 
