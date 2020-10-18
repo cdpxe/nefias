@@ -1,0 +1,1 @@
+This folder contains all files and scripts to impelement a covert channel of the [Size Modulation](http://ih-patterns.blogspot.com/p/p1-size-modulation-pattern.html) hiding pattern. The covert channel mainly relies on `ncat`. See the [approach description]() for more details.
