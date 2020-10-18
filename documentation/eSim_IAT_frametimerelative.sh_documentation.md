@@ -120,7 +120,6 @@ The following plots visualize the unsorted inter-packet times, the sorted inter-
 
 (to be continued)
 
-* (table with eSim scores)
 * (decision heuristic)
 * (detection results)
 * (precision, accuracy, recall)
@@ -145,8 +144,33 @@ The results can be found [here](https://github.com/cdpxe/nefias/tree/master/docu
   <img src="https://github.com/cdpxe/nefias/blob/master/documentation/results/epsilon-similarity_inter-packet_times/test_results_eSim_IAT.png" width="1000" title="Test results for eSim of Inter-packet Times pattern">
 </p>
 
+According to (Cabuk et al., 2004, 2009), the threshold for each epsilon value is computed as the sum of the arithmetic average and 1.5-times the standard deviation. The thresholds are listed in the following table:
 
+<p align="center">
+  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/results/epsilon-similarity_inter-packet_times/thresholds_eSim_IAT.png" width="1000" title="Thresholds for eSim of Inter-packet Times pattern">
+</p>
 
+According to (Cabuk et al., 2004, 2009), the decision heuristic is as follows: A flow is classified as covert if at least 4 of the following 7 conditions hold:
+
+* For epsilon = 0.005: The epsilon similarity score is greater than 98.46%.
+* For epsilon = 0.008: The epsilon similarity score is greater than 98.90%.
+* For epsilon = 0.01: The epsilon similarity score is greater than 99.02%.
+* For epsilon = 0.02: The epsilon similarity score is greater than 99.33%.
+* For epsilon = 0.03: The epsilon similarity score is greater than 99.51%.
+* For epsilon = 0.1: The epsilon similarity score is greater than 99.87%.
+* For epsilon = ">= 0.1": The epsilon similarity score is lower than 0.13%.
+
+Applying this decision heuristics to the flows from above, the following detection results are obtained:
+
+<p align="center">
+  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/results/epsilon-similarity_inter-packet_times/detection_results_eSim_IAT.png" width="1000" title="Detection results for eSim of Inter-packet Times pattern">
+</p>
+
+The following plot shows accuracy, precision and recall of the detection results:
+
+<p align="center">
+  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/results/epsilon-similarity_inter-packet_times/Precision_Accuracy_Recall-IAT-detection_results.png" width="1000" title="Accuracy, precision and recall of the detection results for eSim of Inter-packet Times pattern">
+</p>
 
 
 
