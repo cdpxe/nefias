@@ -88,44 +88,49 @@ In addition to the data sets for testing, a legitimate flow from reading newspap
 
 
 <p align="center">
-  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/images/epsilon-similarity_inter-packet_times/Veusz_IAT_NWZ_Zeitung_unsorted_inter-packet_times.png" width="600" title="Unsorted Inter-packet Times">
+  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/images/epsilon-similarity_retransmission/Veusz_Retransmission_NWZ_Zeitung_unsorted_deltas.png" width="600" title="Unsorted deltas">
 </p>
 
 <p align="center">
-  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/images/epsilon-similarity_inter-packet_times/Veusz_IAT_NWZ_Zeitung_unsorted_inter-packet_times_large.png" width="600" title="Unsorted Inter-packet Times (Large)">
+  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/images/epsilon-similarity_retransmission/Veusz_Retransmission_NWZ_Zeitung_sorted_deltas.png" width="600" title="Sorted deltas">
 </p>
 
 <p align="center">
-  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/images/epsilon-similarity_inter-packet_times/Veusz_IAT_NWZ_Zeitung_sorted_inter-packet_times.png" width="600" title="Sorted Inter-packet Times">
-</p>
-
-<p align="center">
-  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/images/epsilon-similarity_inter-packet_times/Veusz_IAT_NWZ_Zeitung_lambdas.png" width="600" title="Lambdas">
+  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/images/epsilon-similarity_retransmission/Veusz_Retransmission_NWZ_Zeitung_lambdas.png" width="600" title="Lambdas">
 </p>
 
 
 
 ###### Covert Channel
 
-The following plots visualize the unsorted inter-packet times, the sorted inter-packet times and the lambdas of the first 2,001 packets of the flow from `143.93.247.87` to `91.121.132.198` of the recordings contained in the file "remotehost_TCC_faust_GZ_80_160.pcap.csv" (can be found [here](https://github.com/cdpxe/nefias/blob/master/recordings/TCC_SCC_internet_remotehost/remotehost_TCC_faust_GZ_80_160.pcap.csv)) of a covert channel with Inter-packet Times hiding pattern. The channel uses inter-packet times of 80 and 160 ms.
+The following plots visualize the unsorted deltas, the sorted deltas and the lambdas of the first 2,000 packets of the flow from `130.225.254.116` to `143.93.190.252` of the recordings contained in the file "Denmark_17_09_2018_15_24_03.pcap_CLEANED.pcap_covert_0_50_10_20.csv" (can be found [here](...)) of a covert channel with Retransmission hiding pattern. The channel uses parameters O=0, D=50, I=10, J=20.
 
 
 <p align="center">
-  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/images/epsilon-similarity_inter-packet_times/Veusz_IAT_covert1_unsorted_inter-packet_times.png" width="600" title="Unsorted Inter-packet Times">
+  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/images/epsilon-similarity_retransmission/Veusz_Retransmission_covert2_unsorted_deltas.png" width="600" title="Unsorted deltas">
 </p>
 
 <p align="center">
-  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/images/epsilon-similarity_inter-packet_times/Veusz_IAT_covert1_sorted_inter-packet_times.png" width="600" title="Sorted Inter-packet Times">
+  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/images/epsilon-similarity_retransmission/Veusz_Retransmission_covert2_sorted_deltas.png" width="600" title="Sorted deltas">
 </p>
 
 <p align="center">
-  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/images/epsilon-similarity_inter-packet_times/Veusz_IAT_covert1_lambdas.png" width="600" title="Lambdas">
+  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/images/epsilon-similarity_retransmission/Veusz_Retransmission_covert2_lambdas.png" width="600" title="Lambdas">
 </p>
-
 
 
 
 ##### Results
+
+
+
+
+(TO BE CONTINUED)
+
+
+
+
+
 
 
 If the script is run with the legitimate traffic described above, it produces results in the following form, whereas this is only an extract of all results:
