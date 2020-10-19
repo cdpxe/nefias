@@ -70,50 +70,45 @@ Lastly, the script calls `NEFIAS_FINISH` to finalize the processing of the chunk
 ##### Traffic Recordings
 
 * Legitimate Traffic: Part of NZIX-II data of [WAND Network Research Group](https://wand.net.nz/wits/nzix/2/). The [file](https://wand.net.nz/wits/nzix/2/20000705-152900.php) containing traffic from Wed Jul 5 15:29:00 2000 to Wed Jul 5 17:59:59 2000 was split into 6 almost equally sized files by libtrace for better processing. From the first 4 files, those IP (one-directional) connections were extracted which contain at least 2,001 packets, and from the last 2 files, those with at least 5,000 packets were extracted. Each extracted connection was saved to one file each. To sum up, 542 files were used for testing.
-* Covert Channels: The traffic recordings used for testing were TO BE CONTINUED
+* Covert Channels: Serveral covert channels were implemented and recorded that use one of the following pairs of packet sizes to encode 0- and 1-bits: (50,60), (100,101), (100,200), (100,1000) and (1000,1001). Each covert channel transmits the covert message "TheQuickBrownFoxJumpedOverTheLazyDog" in constant repetition using UTF-8. More information on this channel, its impelementation and recordings can be found [here](https://github.com/cdpxe/nefias/tree/master/recordings/covert_channel_size_modulation_pattern). Please note that the recordings of these covert channels were imperfect but this flaw is very small. Check the previous link for more information on this.
 
 
-and can be found [here]():
 
 ##### Plots
 
 ###### Legitimate Traffic
 
-In addition to the data sets for testing, a legitimate flow from reading newspaper online was recorded (not part of testing) using `tshark`. The newspaper [NWZ Online](https://www.nwzonline.de/) was opened on Sept. 9th 2020 at 22:33. Several articles and local sites were openend and read to simulate legitimate traffic and "normal" behavior on the internet. Recording stopped at 22:55 after 5,000 packets (of both flows/directions). The file can be found [here](https://github.com/cdpxe/nefias/tree/master/recordings/Legitimate_flow_of_reading_newspaper). For the first 2,001 packets of the flow from the newspaper's server to the local (and recordring) host, the following plots show the unsorted inter-packet times, a larger version of the previous, the sorted inter-packet times and the lambdas.
+In addition to the data sets for testing, a legitimate flow from reading newspaper online was recorded (not part of testing) using `tshark`. The newspaper [NWZ Online](https://www.nwzonline.de/) was opened on Sept. 9th 2020 at 22:33. Several articles and local sites were openend and read to simulate legitimate traffic and "normal" behavior on the internet. Recording stopped at 22:55 after 5,000 packets (of both flows/directions). The file can be found [here](https://github.com/cdpxe/nefias/tree/master/recordings/Legitimate_flow_of_reading_newspaper). For the first 2,001 packets of the flow from the newspaper's server to the local (and recordring) host, the following plots show the unsorted packet sizes, the sorted packet sizes and the lambdas.
 
 <p align="center">
-  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/images/epsilon-similarity_inter-packet_times/Veusz_IAT_NWZ_Zeitung_unsorted_inter-packet_times.png" width="600" title="Unsorted Inter-packet Times">
+  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/images/epsilon-similarity_size_modulation/Veusz_Size_Modulation_NWZ_Zeitung_unsorted_packet_sizes.png" width="600" title="Unsorted packet sizes">
 </p>
 
 <p align="center">
-  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/images/epsilon-similarity_inter-packet_times/Veusz_IAT_NWZ_Zeitung_unsorted_inter-packet_times_large.png" width="600" title="Unsorted Inter-packet Times (Large)">
+  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/images/epsilon-similarity_size_modulation/Veusz_Size_Modulation_NWZ_Zeitung_sorted_packet_sizes.png" width="600" title="Sorted packet sizes">
 </p>
 
 <p align="center">
-  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/images/epsilon-similarity_inter-packet_times/Veusz_IAT_NWZ_Zeitung_sorted_inter-packet_times.png" width="600" title="Sorted Inter-packet Times">
-</p>
-
-<p align="center">
-  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/images/epsilon-similarity_inter-packet_times/Veusz_IAT_NWZ_Zeitung_lambdas.png" width="600" title="Lambdas">
+  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/images/epsilon-similarity_size_modulation/Veusz_Size_Modulation_NWZ_Zeitung_lambdas.png" width="600" title="Lambdas">
 </p>
 
 
 
 ###### Covert Channel
 
-The following plots visualize the unsorted inter-packet times, the sorted inter-packet times and the lambdas of the first 2,001 packets of the flow from `143.93.247.87` to `91.121.132.198` of the recordings contained in the file "remotehost_TCC_faust_GZ_80_160.pcap.csv" (can be found [here](https://github.com/cdpxe/nefias/blob/master/recordings/TCC_SCC_internet_remotehost/remotehost_TCC_faust_GZ_80_160.pcap.csv)) of a covert channel with Inter-packet Times hiding pattern. The channel uses inter-packet times of 80 and 160 ms.
+The following plots visualize the unsorted packet sizes, the sorted packet sizes and the lambdas of the first 2,000 packets of the flow from `192.168.0.46` to `192.168.0.206` of the recordings contained in the file "Size_Mod_1000_1001_300ms_0925_1800.pcap.csv" (can be found [here](https://github.com/cdpxe/nefias/blob/master/recordings/covert_channel_size_modulation_pattern/covert_channel_size_mod_implementation/Size_Mod_1000_1001_300ms_0925_1800.pcap.csv), this file was not part of testing but is just for illustrations) of a covert channel with Size Modulation hiding pattern. The channel uses payload sizes of 1,000 and 1,001 bytes. The packets of the TCP handshake are vaguely perciptle on the left edge of the first plot.
 
 
 <p align="center">
-  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/images/epsilon-similarity_inter-packet_times/Veusz_IAT_covert1_unsorted_inter-packet_times.png" width="600" title="Unsorted Inter-packet Times">
+  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/images/epsilon-similarity_size_modulation/Veusz_Size_Modulation_covert3_unsorted_packet_sizes.png" width="600" title="Unsorted packet sizes">
 </p>
 
 <p align="center">
-  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/images/epsilon-similarity_inter-packet_times/Veusz_IAT_covert1_sorted_inter-packet_times.png" width="600" title="Sorted Inter-packet Times">
+  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/images/epsilon-similarity_size_modulation/Veusz_Size_Modulation_covert3_sorted_packet_sizes.png" width="600" title="Sorted packet sizes">
 </p>
 
 <p align="center">
-  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/images/epsilon-similarity_inter-packet_times/Veusz_IAT_covert1_lambdas.png" width="600" title="Lambdas">
+  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/images/epsilon-similarity_size_modulation/Veusz_Size_Modulation_covert3_lambdas.png" width="600" title="Lambdas">
 </p>
 
 
@@ -126,48 +121,40 @@ If the script is run with the legitimate traffic described above, it produces re
 
 ```
 $ cat results/*
-10.1.34.147,10.5.71.151,,,, eSim(0.005)=82.39%, eSim(0.008)=88.44%, eSim(0.01)=90.95%, eSim(0.02)=95.15%, eSim(0.03)=96.90%, eSim(0.1)=98.90%, eSim(>=0.1)=1.10%
-10.0.0.250,10.0.38.197,,,, eSim(0.005)=73.99%, eSim(0.008)=83.34%, eSim(0.01)=87.84%, eSim(0.02)=95.10%, eSim(0.03)=96.55%, eSim(0.1)=99.05%, eSim(>=0.1)=0.95%
-10.0.1.164,10.0.25.58,,,, eSim(0.005)=97.50%, eSim(0.008)=98.05%, eSim(0.01)=98.30%, eSim(0.02)=98.95%, eSim(0.03)=99.05%, eSim(0.1)=99.45%, eSim(>=0.1)=0.55%
-10.0.111.89,10.4.75.21,,,, eSim(0.005)=92.55%, eSim(0.008)=93.90%, eSim(0.01)=94.40%, eSim(0.02)=96.50%, eSim(0.03)=97.55%, eSim(0.1)=99.40%, eSim(>=0.1)=0.60%
-10.0.32.144,10.3.222.170,,,, eSim(0.005)=77.64%, eSim(0.008)=86.59%, eSim(0.01)=89.89%, eSim(0.02)=95.85%, eSim(0.03)=97.30%, eSim(0.1)=99.25%, eSim(>=0.1)=0.75%
-10.0.0.91,10.0.4.255,,,, eSim(0.005)=75.99%, eSim(0.008)=86.59%, eSim(0.01)=91.10%, eSim(0.02)=97.60%, eSim(0.03)=98.75%, eSim(0.1)=99.50%, eSim(>=0.1)=0.50%
-10.0.0.91,10.0.4.255,,,, eSim(0.005)=74.59%, eSim(0.008)=87.99%, eSim(0.01)=91.65%, eSim(0.02)=97.70%, eSim(0.03)=98.85%, eSim(0.1)=99.40%, eSim(>=0.1)=0.60%
-10.0.0.91,10.0.4.255,,,, eSim(0.005)=72.94%, eSim(0.008)=86.84%, eSim(0.01)=90.90%, eSim(0.02)=97.20%, eSim(0.03)=98.55%, eSim(0.1)=99.35%, eSim(>=0.1)=0.65%
+10.0.147.228,10.4.90.240,,,, eSim(0.1)=99.70%, eSim(>=0.1)=0.30%, eSim(0.0001)=99.15%, eSim(10)=100.00%
+10.0.0.42,10.3.65.0,,,, eSim(0.1)=99.85%, eSim(>=0.1)=0.15%, eSim(0.0001)=99.80%, eSim(10)=100.00%
+10.0.0.29,10.2.27.34,,,, eSim(0.1)=99.65%, eSim(>=0.1)=0.35%, eSim(0.0001)=94.30%, eSim(10)=100.00%
+10.0.0.29,10.2.27.34,,,, eSim(0.1)=99.80%, eSim(>=0.1)=0.20%, eSim(0.0001)=92.45%, eSim(10)=100.00%
+10.0.0.29,10.2.27.34,,,, eSim(0.1)=99.65%, eSim(>=0.1)=0.35%, eSim(0.0001)=94.05%, eSim(10)=100.00%
+10.0.0.29,10.2.27.34,,,, eSim(0.1)=99.95%, eSim(>=0.1)=0.05%, eSim(0.0001)=95.20%, eSim(10)=100.00%
+10.0.0.29,10.2.27.34,,,, eSim(0.1)=99.85%, eSim(>=0.1)=0.15%, eSim(0.0001)=95.20%, eSim(10)=100.00%
+10.0.0.29,10.2.27.34,,,, eSim(0.1)=99.80%, eSim(>=0.1)=0.20%, eSim(0.0001)=91.85%, eSim(10)=100.00%
+10.0.0.29,10.2.27.34,,,, eSim(0.1)=99.85%, eSim(>=0.1)=0.15%, eSim(0.0001)=91.70%, eSim(10)=100.00%
+10.0.33.168,10.0.219.217,,,, eSim(0.1)=100.00%, eSim(>=0.1)=0.00%, eSim(0.0001)=100.00%, eSim(10)=100.00%
+10.0.33.168,10.0.219.217,,,, eSim(0.1)=100.00%, eSim(>=0.1)=0.00%, eSim(0.0001)=100.00%, eSim(10)=100.00%
+10.0.4.118,10.0.14.251,,,, eSim(0.1)=99.40%, eSim(>=0.1)=0.60%, eSim(0.0001)=98.55%, eSim(10)=100.00%
+10.0.41.57,10.2.202.63,,,, eSim(0.1)=100.00%, eSim(>=0.1)=0.00%, eSim(0.0001)=86.14%, eSim(10)=100.00%
+10.0.41.57,10.2.202.63,,,, eSim(0.1)=100.00%, eSim(>=0.1)=0.00%, eSim(0.0001)=88.59%, eSim(10)=100.00%
 ```
 
-The results can be found [here](https://github.com/cdpxe/nefias/tree/master/documentation/results/epsilon-similarity_inter-packet_times). The following table shows the arithmetic averages and standard deviations of the epsilon similarity scores for several epsilon values:
+The results can be found [here](https://github.com/cdpxe/nefias/tree/master/documentation/results/epsilon-similarity_size_modulation). The following table shows the arithmetic averages and standard deviations of the epsilon similarity scores for several epsilon values:
 
 <p align="center">
-  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/results/epsilon-similarity_inter-packet_times/test_results_eSim_IAT.png" width="1000" title="Test results for eSim of Inter-packet Times pattern">
+  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/results/epsilon-similarity_size_modulation/test_results_eSim_Size_Modulation.png" width="1000" title="Test results for eSim of Size Modulation pattern">
 </p>
 
-According to (Cabuk et al., 2004, 2009), the threshold for each epsilon value is computed as the sum of the arithmetic average and 1.5-times the standard deviation. The thresholds are listed in the following table:
+
+The following decision heuristic is proposed: A flow is classified as covert if the epsilon similarity score for epsilon = 0.0001 lies within the interval (99,45\%;99,95\%); otherwise, it is classified as legitimate traffic. Applying this decision heuristic to the flows from above, the following detection results are obtained:
 
 <p align="center">
-  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/results/epsilon-similarity_inter-packet_times/thresholds_eSim_IAT.png" width="600" title="Thresholds for eSim of Inter-packet Times pattern">
+  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/results/epsilon-similarity_size_modulation/detection_results_eSim_Size_Modulation.png" width="600" title="Detection results for eSim of Size Modulation pattern">
 </p>
 
-According to (Cabuk et al., 2004, 2009), the decision heuristic is as follows: A flow is classified as covert if at least 4 of the following 7 conditions hold:
-
-* For epsilon = 0.005: The epsilon similarity score is greater than 98.46%.
-* For epsilon = 0.008: The epsilon similarity score is greater than 98.90%.
-* For epsilon = 0.01: The epsilon similarity score is greater than 99.02%.
-* For epsilon = 0.02: The epsilon similarity score is greater than 99.33%.
-* For epsilon = 0.03: The epsilon similarity score is greater than 99.51%.
-* For epsilon = 0.1: The epsilon similarity score is greater than 99.87%.
-* For epsilon = ">= 0.1": The epsilon similarity score is lower than 0.13%.
-
-Applying this decision heuristics to the flows from above, the following detection results are obtained:
-
-<p align="center">
-  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/results/epsilon-similarity_inter-packet_times/detection_results_eSim_IAT.png" width="600" title="Detection results for eSim of Inter-packet Times pattern">
-</p>
 
 The following plot shows accuracy, precision and recall of the detection results:
 
 <p align="center">
-  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/results/epsilon-similarity_inter-packet_times/Precision_Accuracy_Recall-IAT-detection_results.png" width="600" title="Accuracy, precision and recall of the detection results for eSim of Inter-packet Times pattern">
+  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/results/epsilon-similarity_size_modulation/Precision_Accuracy_Recall-Size_Modulation-detection_results.png" width="600" title="Accuracy, precision and recall of the detection results for eSim of Size Modulation pattern">
 </p>
 
 
@@ -179,13 +166,14 @@ The following plot shows accuracy, precision and recall of the detection results
 If you want to change the window size, you need to make modifications to the following parts of the script:
 
 * At the beginning of the for loop: `head -n`
-* At the beginning of the END block within the gawk program-file: The first part of the if condition `if (counter == 2001 && counter >= 3)`
+* At the beginning of the END block within the gawk program-file: The first part of the if condition `if (counter == 2000 && counter >= 2)`
 
 ##### Epsilon values
 
 If you want to change the epsilon values, you need to make modifications to the following parts of the script (not necessarily all of them):
 
-* In the BEGIN block within the gawk program-file: e.g. `epsilon_1=<your value>` or if you want to add an additional epsilon value, append `epsilon_8=<your value>; epsilon_8_counter=0`
+* In the BEGIN block within the gawk program-file: e.g. `epsilon_1=<your value>` or if you want to add an additional epsilon value, append `epsilon_5=<your value>; epsilon_5_counter=0`
+* In the END block within the gawk program-file where the number of lambdas, which are below the respective epsilon values, is counted: e.g. `if (arr_lambda[i] < epsilon_1) epsilon_1_counter++`
 * In the END block within the gawk program-file where the epsilon similarity scores are explicitly calculated: e.g. `eSim_1 = epsilon_1_counter / length(arr_lambda)`
 * In the END block within the gawk program-file where the epsilon similarity scores are concatenated to a single string
 
