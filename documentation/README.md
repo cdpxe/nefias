@@ -2,6 +2,8 @@
 
 (C) 2020 Prof. Dr. Steffen Wendzel (Cyber Security Research Group (CSRG)/Zentrum für Technologie & Transfer, Worms University of Applied Sciences, Germany)
 
+<img align="r" src="https://github.com/cdpxe/nefias/raw/master/documentation/logo/nefias_logo.png" title="NeFiAS logo" />
+
 NeFiAS (*Network Forensics and Anomaly Detection System*) is a shell-based tool for performing network anomaly detection, especially in the domain of network covert channels (network steganography, see (Wendzel et al., 2015) or [our project on network covert channel patterns](https://ih-patterns.blogspot.com)). NeFiAS was (initially) written by [Steffen Wendzel](http://www.wendzel.de) (see below for a list of contributors).
 
 NeFiAS is a a tiny framework (very few lines of code), super portable (standard Linux + SSH + TShark), can be run on every hardware (even very old ones) as a beowulf cluster, and can be installed in a few minutes.
