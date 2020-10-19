@@ -1,0 +1,1 @@
+This folder contains the results files from the test of the script [`eSim_Size_Modulation_framelen.sh`](https://github.com/cdpxe/nefias/blob/master/scripts/eSim_Size_Modulation_framelen.sh) that were used in the [documentation](https://github.com/cdpxe/nefias/blob/master/documentation/eSim_Size_Modulation_framelen.sh_documentation.md).
