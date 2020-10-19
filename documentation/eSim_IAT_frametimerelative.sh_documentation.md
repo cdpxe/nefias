@@ -183,6 +183,7 @@ If you want to change the window size, you need to make modifications to the fol
 If you want to change the epsilon values, you need to make modifications to the following parts of the script (not necessarily all of them):
 
 * In the BEGIN block within the gawk program-file: e.g. `epsilon_1=<your value>` or if you want to add an additional epsilon value, append `epsilon_8=<your value>; epsilon_8_counter=0`
+* In the END block within the gawk program-file where the number of lambdas, which are below the respective epsilon values, is counted: e.g. `if (arr_lambda[i] < epsilon_1) epsilon_1_counter++`
 * In the END block within the gawk program-file where the epsilon similarity scores are explicitly calculated: e.g. `eSim_1 = epsilon_1_counter / length(arr_lambda)`
 * In the END block within the gawk program-file where the epsilon similarity scores are concatenated to a single string
 
