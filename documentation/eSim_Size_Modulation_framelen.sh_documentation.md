@@ -140,7 +140,7 @@ $ cat results/*
 The results can be found [here](https://github.com/cdpxe/nefias/tree/master/documentation/results/epsilon-similarity_size_modulation). The following table shows the arithmetic averages and standard deviations of the epsilon similarity scores for several epsilon values:
 
 <p align="center">
-  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/results/epsilon-similarity_size_modulation/test_results_eSim_Size_Modulation.png" width="1000" title="Test results for eSim of Size Modulation pattern">
+  <img src="https://github.com/cdpxe/nefias/blob/master/documentation/results/epsilon-similarity_size_modulation/test_results_eSim_Size_Modulation.png" width="800" title="Test results for eSim of Size Modulation pattern">
 </p>
 
 
