@@ -175,8 +175,8 @@ elif [ ! -d ./results ]; then
 fi
 
 # does the slave script exist?
-if [ ! -e ${SLAVE_SCRIPT} ]; then
-	echo "Critical error: ${SLAVE_SCRIPT} does not exist."
+if [ ! -x ${SLAVE_SCRIPT} ]; then
+	echo "Critical error: ${SLAVE_SCRIPT} does not exist OR is not writable."
 	exit 9
 elif [ "${SLAVE_SCRIPT}" = "" ]; then
 	echo "Critical error: slave-script parameter is empty."
