@@ -158,6 +158,9 @@ echo "KEEP_CHUNKFILES     = ${KEEP_CHUNKFILES}"
 if [ ! -e ${SLAVE_HOSTCONFIG} ]; then
 	echo "Critical error: ${SLAVE_HOSTCONFIG} does not exist."
 	exit 9
+elif [ "${SLAVE_HOSTCONFIG}" = "" ]; then
+	echo "Critical error: slave_hostconfig parameter is empty."
+	exit 9
 else
 	source ${SLAVE_HOSTCONFIG}
 fi
@@ -175,11 +178,17 @@ fi
 if [ ! -e ${SLAVE_SCRIPT} ]; then
 	echo "Critical error: ${SLAVE_SCRIPT} does not exist."
 	exit 9
+elif [ "${SLAVE_SCRIPT}" = "" ]; then
+	echo "Critical error: slave-script parameter is empty."
+	exit 9
 fi
 
 # does the traffic source exist?
 if [ ! -e ${TRAFFIC_SOURCE} ]; then
 	echo "Critical error: ${TRAFFIC_SOURCE} does not exist."
+	exit 9
+elif [ "${TRAFFIC_SOURCE}" = "" ]; then
+	echo "Critical error: traffic-source parameter is empty."
 	exit 9
 fi
 
