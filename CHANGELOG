@@ -29,6 +29,7 @@ FIXES:
  - fix pre-calculation of required chunks in string output
  - improved error handling in pcapng2csv.sh
  - slightly improved error checking in scripts/nefias_lib.sh
+ - check whether certain provided cmdline parameters are just param=  (empty)
 
 v-0.7 : 2020-03-07
  - initial upload to GitHub
