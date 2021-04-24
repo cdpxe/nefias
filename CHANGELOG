@@ -13,6 +13,8 @@ MAJOR:
    - several additional improvements of documentation
    - added some new readme files to describe traffic recorings and
      detection scripts
+ - added "reset" functionality: remove content of slave directories in
+   tmp/ and input/ on startup
 MINOR:
  - support TCP ack and seq numbers by default
  - tiny improvements of code and directory structure; added some sample

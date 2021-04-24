@@ -25,6 +25,7 @@ DEBUG="0"
 SLAVE_HOSTCONFIG="slaves.cfg"
 SLAVE_USERNAME="nefias"
 SLAVE_SCRIPT="scripts/kappa_IAT.sh"
+SLAVE_RESET_SCRIPT="scripts/reset_slave.sh"
 TRAFFIC_SOURCE="mypcap.csv"
 CHUNK_SIZE_IN_LINES=10000
 # IMPORTANT: Do not manipulate the values from frame.number to udp.dstport, their order is crucial for NeFiAS! However, feel free to *add*
@@ -74,8 +75,8 @@ function version()
 {
 	echo "NEFIAS v.${NEFIAS_VERSION}, License: ${NEFIAS_LICENSE}"
 	echo "(C) 2020 Steffen Wendzel, wendzel (at) hs-worms (dot) de"
-	echo "Personal website: http://www.wendzel.de"
-	echo "Project website: http://nefias.ztt.hs-worms.de"
+	echo "Personal website: https://www.wendzel.de"
+	echo "Project website: https://github.com/cdpxe/nefias/"
 }
 
 
@@ -167,7 +168,7 @@ else
 	source ${SLAVE_HOSTCONFIG}
 fi
 
-# does ./results exist?
+# does the directory ./results exist?
 if [ ! -e ./results ]; then
 	echo "Initially creating directory ./results"
 	mkdir ./results || exit 9
@@ -258,8 +259,12 @@ fi
 
 echo "Attaching slaves ..."
 for slave in "${slaves[@]}"; do
-	echo -n "uploading slave script to ${slave} ..."
-	scp -qC ${SLAVE_SCRIPT} scripts/nefias_lib.sh ${SLAVE_USERNAME}@${slave}/${SLAVE_SCRIPTDIR}/
+	echo -n "uploading slave script and additional files to ${slave} ..."
+	scp -qC ${SLAVE_SCRIPT} scripts/nefias_lib.sh ${SLAVE_RESET_SCRIPT}  ${SLAVE_USERNAME}@${slave}/${SLAVE_SCRIPTDIR}/
+	echo "done"
+	echo -n "resetting slave ${slave} ..."
+	CMD=`echo "ssh nefias@${slave}" | sed 's/:.*//'`" ( /`echo "${slave}" | sed 's/.*://'`/${SLAVE_RESET_SCRIPT} )"
+	$CMD # execute remote command
 	echo "done"
 done
 
