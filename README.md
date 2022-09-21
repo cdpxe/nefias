@@ -9,7 +9,7 @@ NeFiAS is a simple and portable tool for network anomaly detection/network foren
 - Portability
 - Code-base as tiny as possible
 - Low barrier to work with the tool; enable students to easily extend the tool when they write a thesis
-- Support good performance but sacrifice performance if the system can be made more accessible for students and other researchers
+- Support good performance, *but* prioritize performance if the system can be made more accessible for students and other researchers
 - Enable replication studies
 - Modularity for detection modules; make it possible to write detection modules with as few lines of code as feasible
 
@@ -17,7 +17,7 @@ NeFiAS is a simple and portable tool for network anomaly detection/network foren
 
 - Very tiny framework: core system contains less than 1,000 lines of code
 - Super portable (core system entirely written in `bash` and `awk` (see the *story* below)
-- Provides rather a good performance (if used as a beowulf cluster), i.e. can be easily spread among many nodes
+- Provides rather a good performance (if used with a Beowulf cluster), i.e. can be easily spread among many nodes
 - Requires only standard Linux, no special libraries or tools required (see *requirements* below)
 
 ### Read the [Documentation](https://github.com/cdpxe/nefias/blob/master/documentation/README.md)
