@@ -1,1 +1,0 @@
-This folder contains the results files from the test of the script [`eSim_IAT_frametimerelative.sh`](https://github.com/cdpxe/nefias/blob/master/scripts/eSim_IAT_frametimerelative.sh) that were used in the [documentation](https://github.com/cdpxe/nefias/blob/master/documentation/eSim_IAT_frametimerelative.sh_documentation.md).

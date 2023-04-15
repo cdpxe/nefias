@@ -1,1 +1,0 @@
-This folder contains images used in the [documentation](https://github.com/cdpxe/nefias/blob/master/documentation/eSim_Retransmission_tcpseq.sh_documentation.md) of the script [`eSim_Retransmission_tcpseq.sh`](https://github.com/cdpxe/nefias/blob/master/scripts/eSim_Retransmission_tcpseq.sh).
