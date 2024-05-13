@@ -2,6 +2,12 @@
 
 <img src="https://github.com/cdpxe/nefias/raw/master/documentation/logo/nefias_logo.png" title="NeFiAS logo" />
 
+#
+
+#### PLEASE NOTE: _NeFiAS is discontinued_ due to the limitations of *bash* environments in terms of stack space and in favor of the *WoDiCoF+* project that will be made public in the coming years. See [here](https://lib.jucs.org/article/23219) for information about the WoDiCoF project and [here](https://empower-rlp.de/portfoliodetails-empower-projekte-cyber-security/worms-distributed-covert-channel-detection-framework-plus) for some information about WoDiCoF+ (in German).
+
+#
+
 NeFiAS is a simple and portable tool for network anomaly detection/network forensics, mostly tailored for the domain of network covert channels (network steganography). It was (initially) written by [Steffen Wendzel](https://www.wendzel.de). With NeFiAS we aim to provide the scientific community with the most accessible, easy-to-use testbed feasible. NeFiAS is a tool that you can use to test your own covert channel detection algorithms. Also, feel invited to publish your own detection algorithms in this repository to allow experimental replications of your own research work (just contact Steffen for this purpose).
 
 ## Design Goals
